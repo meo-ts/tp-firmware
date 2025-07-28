@@ -1,0 +1,2472 @@
+Version.3.16.12 24-07-2025
+	Added new LED mode 3 behaviour for new deister device. 
+	Added new LED mode 4. Only user feed back are indicated.
+	Finalizing IDor Branding.
+	Siedle:
+		OSDP manuel Address assignment always enabled.
+		Advance configuration is default checked. 
+	Conventus:
+		Add possibility for Card or pincode searching
+		added new Checkbox which allow user to use either there card number of pincode. Settings are located under Conventus settings	
+Version.3.16.11 16-07-2025
+	Implementing new Branding type
+Version.3.16.10 27-06-2025
+	Smart-Intego
+		New checkbox for changing the Wakeup interval. ( Shorter reaction time for remote open ). Have impact on the batteri life time
+	Intrusion:
+		Fixed bug in Zone editor with dublicated links to the area. Just open zone editor and press save to fix problem.
+		Set can start Prewarning if Autoset allows it.
+		Fixed bug in autoset where it only did start ones.
+		Exit timer can now work with Wired Areas. the Wire Areas are not set while exit timer is running. New check box is added for the Wirearea setting is added.
+		Intrusion objects wasn't distributed correctly on slave devices
+	Changing RS485 communication settings in Master/Slave env could result in OSDP IO Module is going offline.
+	Corrupted Table could result in endless Full sync. Error is now reported.
+Version.3.16.9 13-06-2025
+	Scheduler bug fix: When Execute monthly task trigger is used, next execution time was sometimes miscalculated resulting in skipping monthly task.
+	Offline events. DESfire devices needs transaction commit for each write operation if file type is backup.
+Version.3.16.8 27-05-2025
+	Added possibility for suppressing Reader tamper Switch ( Reader settings)
+	Added 'Automatic communication test (RP)' to sia accounts.
+	Removed Timestamp from SIA Null message (Evalink)
+Version.3.16.7 26-05-2025
+	Siedle:
+		- #411 Improvements in configuration Wizard. For OSDP readers, added options: "Is Siedle SE10XX" and "Enable address manual assignment". When creating new OSDP reader: cardless access is enabled by default,  card format is set to "Siedle Prox" if "Is Siedle SE10XX" is checked. Added option for "Learning reader" checkbox for all readers.		
+Version.3.16.6 23-05-2025
+	Support for EVALink SIA alarm receivers.
+Version.3.16.5 19-05-2025
+	Added Nedap OSDP id
+	Fixed OSDP Busy replying that didn't detect device restart.
+	Added Advance Options for enabling the OSDP Secure channel setting
+Version.3.16.4 15-05-2025
+	Integrated:
+		Promoted Card format 13. 
+Version.3.16.3 09-05-2025
+	Scheduled access implemented.
+	Web API for scheduled access (extending/overriding week programs for specific intervals), API version incremented to v1.11.1.
+	SIA Backup signal wasn't restored correctly.
+	Integrated:
+		WAN Broadcast didn't broadcast to Subbus is the Master was Techpoint
+	SIA Transmitter.
+		Alarms was only transmitter on poll time if all lines have been offline.
+Version.3.16.2 28-04-2025
+	Integrated:
+		Detector 76 wasn't update whne Mngt connects and disconnects.
+	Show pincode * while typing
+Version.3.16.1 24-04-2025
+	Bug fix; when JSON cardHolder.validFrom is set to null or omitted over API for card holder, the UI editor for card holder reports error when pressing on Save.
+	Demo implementation of scheduled access for doors and access groups (menu Access/Door Management/Scheduled access).
+	Intruduced Enable/Disable for DataModem Keep alive.
+	Intruduced Keep alive retries counter.
+	Fixed restore behaviour for Lan and Datamodem with SIA Transmitter
+	Importing Smart-Intego Offline access events didn't parse the card number correctly.
+	Integrated:
+		Whitelist entries was created from readers even they didn't support it
+	Siedle Prox read on SE readers did fail because of changes made for PNG readers. ( Siedle req)
+	New Deister reader uses the OSDP amber led for Keypad backlight
+	Integrated:
+		TCMMP::IsBusBroadcast did compare third addess incorrectly.
+Version.3.16.0 26-02-2025
+	Bug fix, in card holder editor, access groups were not sorted.
+	Bug fix for SaltoShip Card viewer
+	Bux fix for Salto TimeZone periods. Multiple periods wasn't handled correctly and could lead into no access
+Version.3.15.12 17-04-2025 HOTFIX
+	Integrated:
+		TCMMP::IsBusBroadcast did compare third addess incorrectly.
+Version.3.15.11 15-04-2025 HOTFIX
+	New Deister reader uses the OSDP amber led for Keypad backlight
+Version.3.15.10 14-04-2025 // HOT FIX
+	Siedle Prox read on SE readers did fail because of changes made for PNG readers. ( Siedle req)
+Version.3.15.9 03-03-2025	// Hot FIX
+	Importing Smart-Intego Offline access events didn't parse the card number correctly.
+Version.3.15.7 11-02-2025
+	Fixed selection problem for Event filters and Thor SIA Intrusion alarms.
+Version.3.15.6 06-02-2025
+	Scheduler Bug fix: email send task with Scheduler could sometimes fail (rejected by smtp server) because attachment was using LF instead CR LF.
+	Fixed issue where OSDP driver could restart to some mail aligment
+	Added WebAPI Reader interface.
+	Added new Card option Ignore Intrusion set. Card can enter door even if door area is set.
+Version.3.15.5 27-01-2025
+	Fixed 400 days issue. Could lead into reboot after 400 days.
+	Added card trace to the Integrated version
+Version.3.15.4 08-01-2025
+	SPT:
+		Remove Double click tooptip from event details if row is shoing eventlog link.
+		Fixed bug with SIA alarm accepted events.
+		Accumulated transmitter timeouts did log last successfully event.
+	Fixed OSDP NACK if AVUTEC Device. Nack during Input request
+Version.3.15.3 17-12-2024
+	Added SIA Backup line 1-3 detector.
+	Minor correction for SIA Alarm accepted and Accumulated transmitter errors.
+	Allow 2 time network operator lost before settings databmodem to failure.
+	Web API bug fix: some API paths (with 3 segments, such as access/cardHolders/filter) were no longer accessible and API would produce error "Specified path ... not supported" with 404 not found http error code. The bug was introduced in v3.15.0.
+	License:
+		New feature for reseting branding
+	Web API proxy:
+		- Changed the way /proxy is working; 
+			now proxyRequest JSON object is required inside which web method is specified thus removed GET, PUT, DELETE /proxy (only POST is kept).
+			proxyRequest contains: isBodyEncoded (bool), body (JSON or base64 encoded string), ignoreConfigHttpHeaders (bool), encodeResponseBody (bool), httpHeaders (array).
+			proxyResponse contains: isBodyEncoded (bool), body (JSON or base64 encoded string)
+		- Web API version incremented to v1.8.1.
+	Siedle help documentation updated for v3.14.25.
+	SPT/SIA:
+		Added SIA Transmission timeout event
+		Added SIA Transmission accumulated timeout event
+		Added SIA Transmission ack event
+		Bug fix. Sia level 2 and 4 may not see transmitted event.
+		Viewing Transmitted event did use double click. Now changed to just click
+		Current transmitted event could be lost if alarm line was offline.
+	Account lockout changed from 90 to 120 sec
+	Configuration Wizard bug fixes: 
+		- "With door contact" checkbox was not respected in certain cases when new door was created.
+		- If door was created and deleted, the UI would show wrong state.
+		- If door was created and deleted and created again, the changes were not saved.
+Version.3.15.2 03-12-2024
+	Wiegand driver removed.
+	Added Card format TechSecure Mifare. ( Stupid but.. )
+	Fixed bug where Aperio lock couldn't set perm open.
+	Integrated:
+		Bus broadcast wasn't converted into local broadcast.
+		Mail ack wan't transmitted when Bus broadcast mails received.
+	SPT:
+		Minor fixes for CU Detectors.
+Version.3.15.1 27-11-2024
+	Web API proxy:
+		- added support for a custom http header "Custom header 1" (user supplied header name and value) which can be specified in Environment device editor.
+		- Web API version incremented to v1.8.0.
+	Siedle:
+		- #401, (similar to #348) In configuration Wizard, on Doors page, the option "With door contact" was not displayed correctly in German for newly created doors.
+Version.3.15.0 26-11-2024
+	Initial implementation of Web API proxy. Proxy device configurations can be found under System/Administration/Environment devices page.	
+
+Version.3.14.37 17-06-2025 HOTFIX
+	Data modem. 
+		Low signal quality signal wasn't cleared correctly.
+
+	Integrated:
+		Added missing Detector 77 ( Mngt missing )
+	SIA Transmitter.
+		Alarms was only transmitter on poll time if all lines have been offline.
+Version.3.14.34 09-05-2025 HOTFIX
+	Backup signal wasn't restored correctly.
+Version.3.14.33 08-04-2025 HOTFIX
+	Intruduced Enable/Disable for DataModem Keep alive.
+	Intruduced Keep alive retries counter.
+	Fixed restore behaviour for Lan and Datamodem with SIA Transmitter
+Version.3.14.31 03-01-2025 SPT HOTFIX
+	SPT:
+		Accumulated transmitter timeouts did log last successfully event.
+Version.3.14.30 19-12-2024 SPT HOTFIX
+	Fixed bug with SIA alarm accepted events.
+Version.3.14.29 18-12-2024 SPT HOTFIX
+	Remove Double click tooptip from event details if row is shoing eventlog link.
+Version.3.14.28 17-12-2024 SPT Hot fix
+	Minor correction for SIA Alarm accepted and Accumulated transmitter errors.
+	Allow 2 time network operator lost before settings databmodem to failure.
+Version.3.14.27 10-12-2024
+		Bug fix. Sia level 2 and 4 may not send transmitted event.
+		Viewing Transmitted event did use double click. Now changed to just click
+		Current transmitted event could be lost if alarm line was offline.
+Version.3.14.26 06-12-2024
+	SPT/SIA:
+		Added SIA Transmission timeout event
+		Added SIA Transmission accumulated timeout event
+		Added SIA Transmission ack event
+	Account lockout changed from 90 to 120 sec
+
+Version.3.14.25 05-12-2024
+	Siedle:
+		Use door contact is now default disabled
+Version.3.14.24 04-12-2024 HOTFIX
+	Configuration Wizard bug fixes: 
+		- "With door contact" checkbox was not respected in certain cases when new door was created.
+		- If door was created and deleted, the UI would show wrong state.
+		- If door was created and deleted and created again, the changes were not saved.
+version.3,14,23 03-12-2024 HOTFIX
+	SPT:
+		Minor fixes for CU Detectors.
+Version.3.14.22 27-11-2024 HOTFIX
+	Siedle:
+		- #401, (similar to #348) In configuration Wizard, on Doors page, the option "With door contact" was not displayed correctly in German for newly created doors.
+Version.3.14.21 25-11-2024 		HOTFIX
+	Restarting datamodem didn't work if there was pincode on the SIM card
+	Changing weekprograms on systems with more the one Intrusion profile weekprograms could cause server malfunction on both Master and slaves
+Version.3.14.20 25-11-2024
+	New translation file, v174.
+	APB Parking as disabled for now. 
+Version.3.14.19 21-11-2024
+	Fixed Siedle ELM leds issues.
+Version.3.14.18 19-11-2024
+	Datamodem:
+		Fixed issue with restarting database. ttyUSB did change occasionally.
+	SIA Transmission.
+		Fixed issue with missing network alarms
+	SPT Mode:
+		Sia level 1 is not allowed to see any monitor forms.
+	Integrated:
+		Tamper alarm from ATX couldn'e be cleared.
+	Fixed parking Issues.
+	Siedle:
+		- #374, Siedle unsupported languages are now marked as "Beta", removed: previous implementation of hiding certain languages unless admin is logged in.	
+		- #377, In reader editor under "Siedle Vario" tab, address was not validated properly (e.g. 9) causing a crash.
+		- New translation file, v171.
+		- Added ST5/ST10 as variobus type
+		- #348, In configuration Wizard, on Doors page, the option "With door contact" was not displayed correctly in German.
+		- #397 Changed contact details for Siedle. There are two sets, one for case when German language is selected and another for all other languages.
+	Changed default company/vendor contact web address from http to https (used in footer etc.).
+	Bug fix in Web API user rights, incorrect internal values used for API rights for paths: 	
+		/management/intrusion, /config/intrusion/profiles, /events/static/types, /management/apb, /management/apb/status, 
+		/access/static/types, /config/readers/filter, /management/keybox, /config/keyboxGroups/filter,/general/static/types
+	as most customers use option "Allow all methods" (under "Web API right" tab and under "Remote access/Cloud Web API right" in user editor) they are not affected. For customers 
+	that were using options for above mentioned API rights, they must open user editor and click on Save to save correct settings again.	
+Version.3.14.18 08-11-2024
+	Buanco:
+		Checking for dublicated total download records.
+		Change how we detect when download is done.
+Version.3.14.17 30-10-2024
+	Integrated:
+		LAN broadcast wasn't transmitted correctly.
+		Fixed WAN broadcast issues.
+	Timeserver:
+		Adjusting the clock did sometimes fail.
+Version.3.14.16 28-10-2024
+	Fixed bug with Parking counting
+Version.3.14.15 25.10.2024
+	New translations v168 (Siedle).
+	Fixed bug where web page for global settings (e.g. under System/Administration/Access/Settings) were not showing current Domain label (e.g. @domain_name) when logged in administrator user.
+	Fixing Parking Issue.
+	Offline history didn't show cards correctly.
+Version.3.14.14 24-10-2024
+	Bug fix: in property optimization with pre-loaded properties in multi-TechPoint environment, fetching of default property was delegated to the Server (inter-process communication) which was causing slowdown and delay (e.g. first time you open reader editor) - it was most apparent in larger installations.
+	To improve web editors loading speed, properties tab loading strategy changed from pre-load to lazy/deferred-load.
+	Fixed Jira points:
+		#160
+		#170
+Version.3.14.13 21-10-2024
+	Added more enhanced intrusion from the card reader.
+Version.3.14.12 16-10-2024
+	The "Web memory usage optimization per session" introduced in v3.1.13 is disabled by default, it will be used only for special pages from now on.
+	Integrated:
+		Added new cardformat 6.	
+Version.3.14.11 11-10-2024
+	New translations v167 (Siedle).
+	Siedle:
+		- #347 Report templates translations.
+		- #346 Translations ("Cabinet Sabotage").
+	Domain mode wasn't reload automatic when changes were made. Result was unpreditiable until system was rebooted.
+	fixed problem with event consumer where throttling did reload on events correct after it have been active.
+	Menu Interlock is hidden if Siedle brand
+Version.3.14.10 03-10-2024
+	Fixed issue with Exclude property control where eg Output option duration was disable if follow input as disabled.
+	Added wrong vendor name to device event if TPA-IO1 wasn't detected.
+	Fixed bug with IP Connector if transport was TCIP. 
+	Bug fix: in case Event log web page was set to auto refresh, the refresh timer was running even when page was no longer shown causing unnecessary traffic (until page was auto disposed).
+	Integrated;
+		Fixed Wanbroadcast bug.
+Version.3.14.9 02-10-2024
+	Siedle:
+		- #340, black theme, showing white links on home page under big icons (group menu) instead of blue.
+		- #381, Configuration Wizard, the dialog, shown after clicking on "Assign OSDP address.." 
+			button under Readers tab, was displaying channel A (instead of B) for OSDP reader on channel B.
+	Reader location 'Leave parking area' is changed to 'Parking area (pedestrian exit)'
+	Fixed configuration issues with Parking areas.
+Version.3.14.8 26-09-2024
+	Xyte (https://xyte.io) Cloud integration demo:
+		Enabling device with Xyte cloud functionality by adding license.
+		Xyte device registration based on MAC and serial (serial is random).
+		Sending telemetry to Xyte (by default in 1 minute intervals).
+		Showing Xyte configuration/info page (System/Administration/Xyte cloud) on device local Web where end user can enable/disable it and change telemetry frequency.
+		Logging Xyte status/errors.		
+	New translations v163/v164 (Siedle).
+	Default length for Smart-Intego offline wasn't set if firmware was upgraded from 3.10 or lower. Working around for existing version is just save the Offline settings.
+	Led mode 2 didn't use standard interaction specification
+	U&Z. Implement various detection for Radiolink lost.
+Version.3.14.7 19-09-2024
+	EMV together with TechSecure/Siedle Secure as treated as 56 bit. Corrected now but old installation shall enable 'Compensate for Wrong EMV' for backward compatible.
+	LED Behavior mode 2 ( No Idle Light ) didn't show door colour
+	Holidays wasn't working properly together with domains if they were created before making Domains.
+	Siedle:
+		Jira SC600-377
+		Jira SC600-353
+		Jira SC600-374
+		Jira SC600-351
+Version.3.14.6. 18-09-2024
+	Skip received osdp mails if report addr doesn't match poll addr.
+	Includes changes from 3.14.4.HOT FIX
+Version.3.14.5 12-09-2024
+	Linking Digitial inputs to a wire zone wasn't possible.
+	Poll and Poll timeout for OSDP devices SE1250 and SE1042, needs to be slower. Fix issue where they occasionally after reboot doesn't get online again
+	techosdp_serial.settings have the following options for adjusting the speed:
+		ttyO1_OSDP_POLL_SPEED=100
+		ttyO1_OSDP_POLL_TIMEOUT=250
+	Mirror is disabled.
+
+Version.3.14.4.HOTFIX 18-09-2024
+	Linking Digitial inputs to a wire zone wasn't possible.
+	Poll and Poll timeout for OSDP devices SE1250 and SE1042, needs to be slower. Fix issue where they occasionally after reboot doesn't get online again
+	techosdp_serial.settings have the following options for adjusting the speed:
+		ttyO1_OSDP_POLL_SPEED=100
+		ttyO1_OSDP_POLL_TIMEOUT=250
+	Mirror is disabled.
+Version.3.14.4 05-09-2024
+	Reload APB Status and Inquire APB status is now enabled as standard.
+Version.3.14.3 04-09-2024
+	Minor optimization for Master Mirror.
+Version.3.14.2 02-09-2024
+	Siedle:
+		- #386, Domain related functionality adjustments for special "Service" user account: 
+			-- Has access to Domains menu and can manage Domains and Domain object rights.
+			-- Cannot switch to another domain (only its own Default Domain).
+			-- Can create/manage "Single Domain Administrator" users for other Domains.
+			-- Can move card holders/cards from Default to another Domain.
+			-- Cannot create/manage non "Single Domain Administrator" users in other Domains.
+		- Online management menu now allowed to special "Service" and "Facility" user accounts.
+	Intrusion:
+		Fixed exception while Intrusion Action inputs toggles a state.
+Version.3.14.1 09-08-2024
+	Minor fixes for U&L.
+	Fixed Reader tamper from Smart-Intego handles.
+	SIA Poll message didn't include standard Timestamp
+	Modem Monitor clear. Revert RX/TX clear changes so they are left untouched.
+	Smart/Intego random timeout adjusted from max 10sec to max 5 sec	
+	Siedle:
+		- Refixed #163,#170,#160.
+		- #354, When system global access settings "Card rights method" was set to "Access groups + card specific rights" mode, 
+		"card specific rights" were not deleted in certain cases such when moving a card from Default to another domain or when setting access rights trough the API or JSON import.
+		The links to "card specific rights" were deleted in some cases but actual records (non reusable access groups) were left behind. 
+		In other cases, like moving a card to another domain, "card specific rights" were kept.
+	Mirror Sync was always disabled.
+Version.3.14.0 04-08-2024
+	Records in system_realtimestaus wasn't delete when doors/readers were deleted.
+	Fixed issue with PropertyInclude and Depending prob was a Combobox
+	Added support for Uhlmann Zacher handles.
+	Added Meta values for Uhlmann Zacher Battery values.
+Version.3.13.13 01-08-2024
+	SIA EN50136 mode:
+		Enabled Optical tamper is now hidden
+Version.3.13.12 31-07-2024
+	Datamodem monitor Clear did only clear Last errors. It now also deletes RX/TX
+	SIA EN50136 mode:
+		Common properties are reenabled. Only visible tab is System settings with only visbile Property Eventlog period
+		Fixed problem with Door Exit Push 4 and normal closed.
+Version.3.13.11 29-07-2024
+	Web log-in account locking after failed attempts. Enabled by default. Account will be locked for 90 seconds after 10 failed attempts within 60 seconds. The settings can be changed under System/Administration/System properties/Common properties on "User log-in lock" tab.
+	SIA account locking: account will be locked for 90 seconds after 3 failed attempts within 60 seconds.
+	Keybox and elevator floors are now domain supported.
+	Added Master mirror setting for reducing sync traffic
+	If floor number was change would cause a ghost input from the elevator.
+	Task scheduler:
+		- Added new task action "Delete card holders (and linked cards)", currently supporting delete condition "Expired card holders (valid to)".
+	Bug fix in current (logged-in) user editor: when changing password under certain circumstances it would allow setting it to empty value.
+	Showing hostname on in foot-note and web browser page title.		
+	Showing row count on each list page in title parentheses, e.g. for "Card holders" page the title will look like "Card holders (1234)"
+	Bug fix: Door management and Online management were not showing page title.	
+	Fixed sharing problem with license files.
+	Integrated:
+		New option for forcing Pincode if cardless access.
+		Changing SIA Zone to SIA Detectors. 
+	Event Notifieres didn't respecting hidden attribute which already prevents the event log details to be showed.
+	Events that occures while a event notification was disabled was transamitted after reenable. It will now load last eventlog ID if it have been disabled
+	Web API (v1.7.1):
+		- Bug fix. When inserting/updating holidays (POST and PUT /config/holidays), specifically holiday period (“holidayPeriod” JSON object), the specified "endMonth" field was not respected and the field was set to supplied “startMonth” instead.	
+	OSDP Driver error (#380)
+	Removing TechSmart Menu item (#361)
+	Restoring factory default does not delete all settings (#375)
+	Buzzer output was always set. (#160)
+	Added feature to make database integrity check.
+	Added feature for executing SQL file before start. ( can be used for fixed database faults )
+	SIA EN50136 mode:
+		- AL1 built in user (sia1) "keep session alive" claim removed.
+		- Showing special help file when SIA EN50136 mode is activated.
+		- ATX device didn't transmit Cabinet tamper
+		- Exitpush 4 is set to normal close when EN50136 is selected
+		- SIA Statictics is now default enabled
+		- Settings for optical tamper is now reenabled
+		- SIA filter selections is now mandatory
+		- Thor DB settings is remove is EN50136 
+		- Thor Settings is only showing Bus addr
+		- Reader functions and access functions are removed.
+Version.3.13.7 24-06-2024
+	Door intrusion input wasn't updated if the area was remote. 
+	Variobus wasn't allowed if branding SieTech.
+	Web API: 
+		Bug fix; bug was introduced in 3.12.4/3.11.2/3.13.1 causing Web API not to return extId member (bug was in sql interface).
+Version.3.13.6 20-06-2024
+	Support for +24 volt Enabling during startup
+	Minor adjustment for SIA access levels.
+Version.3.13.3 06-06-2024
+	Changed Cabinet sabotage intput ( Door exit 4 ) to normal closed.
+	Door mode Normal close/Open didn't work for Door input Exit 3 and 4
+	Intrusion:
+		Delay after unset was used incase of autoset
+		Postpone autoset didn't restart prewarning timer.
+Version.3.13.2 04-06-2024
+	SIA Transmitter: 
+		Support for SIA EN50136 mode (SIA SPT EN50136-2-2013);
+		SIA EN50136 mode can be activated on System/Communication "SIA Standard" page.
+		Support for SIA account access levels: 1 (open login), 2 (end user), 3 (installer) and 4 (manufacturer). 
+		When SIA EN50136 mode is activated, system accounts sia1, sia2, sia3 and sia4 are created and all other accounts are disabled.		
+		SIA account approval: before new level 3 and level 4 accounts are allowed to login, they must be approved (level 2 approves level 3, level 3 approves level 4).	
+		Showing "Running in SIA EN50136 mode.." on login screen.
+		One click login for SIA level 1 account (no password needed).
+		Add Door exit push 4 to cabinet equation if EN50136 is selected
+	Showing hostname on login screen (under title).		
+	Changing baud rate for all device.
+	Smart-Intego:
+		Closing a door after perm could cause problems and not close the door. 
+Version.3.12.5 16-05-2024
+	Minor correction for Offline settings ( Advance settings )
+	Smart-Intego Bug:
+		Smart-Pin device could my mistake be detected as a lock device.
+Version.3.12.4 06-05-2024
+	Domains and Master/Slave did result in server crash
+Version.3.12.3 02-05-2024
+	Integrated:
+		Clearing Wireless battery fault didn't work correct.
+Version.3.12.2 02-05-2024
+	Minor correction for AIR-Locks
+Version.3.12.1 29-04-2024
+	Added New software input for doors. Card denied will be trigged if denied access
+	Formatting DESfire card for TechSecure format wans't possible without having an offline license.
+Version.3.12.0 24-04-2024
+	Intrusion supervised Zone was create on different Techpoint than the Area it belongs to. Could lead into Crash
+	Implemented AIR Locks.
+	Added Checkbox for enabling SIA Text messages
+Version.3.11.7 20-06-2024 ( HOTFIX )
+	Door intrusion input wasn't updated if the area was remote. 
+Version.3.11.6 14-06-2024 (HOTFIX)
+	Integrated.
+		Treat Reich pass as Chipid and allow Swap nibbles.
+Version.3.11.5 07-06-2024 (HOTFIX)
+	Intrusion:
+		Delay after unset was used incase of autoset
+		Postpone autoset didn't restart prewarning timer.
+Version.3.11.4 03-06-2024 (HOTFIX)
+	Smart-Intego:
+		Closing a door after perm could cause problems and not close the door. 
+Version.3.11.3 14-05-2024 (HOTFIX)
+	Minor correction for Offline settings ( Advance settings )
+	Smart-Intego Bug:
+		Smart-Pin device could my mistake be detected as a lock device.
+Version.3.11.1 30-04-2024 ( HOTFIX )
+	Formatting DESfire card for TechSecure format wans't possible without having an offline license.
+Version.3.11.0 17-04-2024 
+	Cloud:
+		IMPORTANT: 
+			ALL customers using any cloud functionality (Cloud API, Phone App, Remote Web Browsing) 
+			MUST UPGRADE to this version until planned cloud infrastructure upgrade, otherwise they will lose cloud connectivity.		
+		Planned cloud backend upgrade: 1st July 2024.
+		No functionality will be lost after the upgrade.
+		Cloud infrastructure upgrade will be performed by our provider Microsoft Azure (IoT Hub's Gateway v1 upgrade to v2) and 
+		Device Streams (Remote Web Browsing using this technology) will be disabled.
+		Our application level cloud backend services are already updated in order to comply with upcoming change (TechPoint Cloud Web Gateway v3).
+		Added support for Azure Web Pub Sub as alternative to IoT Hub Device Streams. 		
+		Showing device cloud information on cloud settings page on Info tab (the information that was visible on License page + more).
+		Customers that were using strict firewall rules will need to allow access to new streaming endpoint: https://tpcloud.webpubsub.azure.com
+		(details of what remote hosts/ports need to be allowed can be found on newly added Cloud settings Info tab).
+Version.3.10.2 09-04-2024	
+	Empty Intrusion commands was loaded which lead into starting Enhance Intrusion menu
+Version.3.10.1 17-03-2024
+	Integrated:
+		Fixed MMP routing problem when TP is master on the Top BUS.
+		Fixed Missing replie for Request Who Are You
+		Fixed Routing problems is TP is connected directly to a subbus.
+		Set/Unset had wrong User id
+Version.3.10.0 12-03-2024
+	System Realtime status show Battery status for Wireless online locks and Offline locks.
+	SIA Transmission did send all stored events. Last eventid is now set to last event id when account is created
+Version.3.9.14 09-04-2024	( Hotfix )
+	Empty Intrusion commands was loaded which lead into staring Enhance Intrusion menu
+Version.3.9.13 07-03-2024
+	Integrated MMP Protocol.
+		Corrected data link address in case of broadcast message 
+	Aperio Device type L100 was not selectabled.
+Version.3.9.12 06-03-2024
+	Adjustment for Optical Tamper detection. ( Testing mode)
+Version.3.9.11 04-03-2024
+	Added new Factory mode command ( Restart lan adaptor )
+Version.3.9.10 29-02-2024
+	Cloud:
+		Auto disable/enable device streams (remote web browsing) when change is detected in cloud back-end (the cloud service will auto reconnect).
+		When device streams are not supported on cloud back-end, in order to avoid complete loss of service, we must disable it.
+		Showing more information regarding device stream status on cloud settings page.
+		Logging events when device stream support change is detected on cloud back-end.
+		Depending on the information we get regarding device stream support from our Cloud/IoT hub provider (Microsoft Azure), we might implement alternative solution.
+	Integrated:
+		Area status mail from Buzzer devices, wasn't sendt as SIA Message. Keep in mind that Settings area will result in one or more dublcated Area Changes
+	Minor Offline adjustment.
+Version.3.9.10
+	Tamper threshold settings was not correct
+	Offline integration:
+		Support for Events 
+		Possibility for selection different cards size ( DESfire)
+	Integrated:
+		Fixed issue with Uninitalized device and programming from AICS32
+	Cloud:
+		Disabled registration of device stream callback in case there is no cloud license for remote web browsing or it is disabled 
+		(device stream callback install would break cloud connection if device streams feature is not supported on the backend).
+		Increased reconnect delay interval (from 1 to 30 seconds) in case of connection error.
+		Showing device stream status on cloud settings page.
+		Due to information from our Cloud/IoT hub provider (Microsoft Azure) that device streams feature might no longer be supported,
+		this update will make sure that customers that are using only Phone app and/or Cloud API are not affected. 
+		Customers that also use Remote Web Browsing feature will at least have option to disable it in order to get Phone/API features working.
+		This is initial update and will most likely be followed by another update that will automatically disable device streams when lack of support is detected.	
+Version.3.9.9 20-02-2024
+	Fixing STID readers are replying Busy. Previous mail shall be tranmitted without any modification ( Treat it s retransmit )
+Version.3.9.8 19-02-2024
+	Fixed Card format4 HID Prox with sitecode. 
+	Fixed Codepage translation issue for Vanderbilt and System house readers. ( Readers with display )
+	Reader key command Block door requires card holder having Allow blocked doors. Warning event is now generated
+Version.3.9.7 16-02-2024
+	Updating Vanderbilt display wan't fast enough
+Version.3.9.6 12-02-2024
+	Fixed SIA convertion problem when OSIRIS is selected.
+Version.3.9.5 12-02-2024
+	Added ChipID Format ( Bird&Bird) Compensate for old bug with CIDRON Readers and 37 Bit HID Prox format.
+	Integrated:
+		Fixed bug where RKP and CU30 on a subbus didn't get online correctly.
+Version.3.9.4 08-02-2024
+	Text under main group menu images (shown after login) was not clickable link which could have caused issue of being unable  to open a menu in case image is not loaded for any reason.
+	Added static DOM/HTML ids for login screen elements in case login needs to be automated.
+	Integrated:
+		Enabling 'Adjust Thor clock from NTP' did prevent ATX from receiving alarms from Subbus
+Version.3.9.3 30-01-2024
+	Integrated:
+		Overrule APB can now run with having access feature.
+Version.3.9.2 26-01-2024
+	Integrated:
+		TechPoint ATX directly on the bus, wasn't update with Sub device table and would there not send any events.
+Version.3.9.1 23-01-2024
+	Integrated:
+		GPI-IO. Selecting inputs for Tamper monitoring didn't work.
+Version.3.9.0 22-01-2024
+	Bug fix in report template parameter value order (doors, readers, access groups, keyboxes etc.), some ordering was missing and some did not have "NOCASE" option.
+	Bug fix in report template "Unique access count (per company, location, day)", "Week day" column was incorrect.	
+	IEEE 802.1X (wpa supplicant) support for CA cert upload/replace after configuration is already activated (only when "Skip uploaded certificate verification.." option is enabled).
+	Time interface is dynamiclly checking the timeserver.
+	Integrated:
+		Overrule APB is now implemented for existing ERC. Requires that Top bus techpoint have one thor reader for Database access.		
+		Init ERC reader didn't work because TechPoint didn't check Sitecode on WAY request
+		NT9017/NR9017 is now treaded correctly if running as standalone ATX and also some minor bug fix when running GPI-PC/ATX/BRIDGE 
+	TechpointAlert:
+		Didn't catch if TechPointWatchdog died. 
+Version.3.8.2 12-01-2024
+	Conventus:
+		New property for CURL timeout. ( Inbox process timeout )
+Version.3.8.1 10-01-2024
+	Web API (v1.7.0):	
+		Keybox API: fetching keybox groups and keyboxes with filtering. Method: POST /config/keyboxGroups/filter.
+		Keybox management (open keyboxes). Method POST /management/keybox.
+		Fetching general static types, for now table ids/names. Method: GET /general/static/types. 
+		Fetching realtime techpoint sync status. Use existing method GET /techpoints like: /techpoints?getSyncStatus=1 .
+Version.3.8.0 03-01-2024
+	Web API (v1.6.0):		
+		APB (Anti passback) management API: POST /management/apb/status, POST /management/apb.
+		Added field apbConfig to intrusionContainer JSON (for area).
+		Added field clearedType to eventFilter which enables fetching events (alarms/alerts) that have not been cleared.	
+		Added GET /access/static/types method for fetching static access types configuration, currently including card options.		
+		Added POST /config/readers/filter for fetching readers.
+		Bug fix: eventFilterResult, intrusionFilterResult, intrusionStatusResult were not including count (total count) field in the response.	
+	Global event webhook bug fix: 
+		default event filter had JSON event filter doNotFetchData set to true which would cause repeated attempts for connections, now doNotFetchData must be false or omitted for webhook to be enabled.
+	Se reader 1360 didn't report support for DESfire backup commit
+Version.3.7.3 02-01-2024
+	Searching for card holder in online management and Present card holders didn't work
+Version.3.7.2 19-12-2023
+	Web Area and Zone editors were showing the wrong ID in lower right corner of the editor.
+	Web API:
+		Bug fix: eventFilter JSON object (used in e.g. POST /events/filter) would failed to be parsed when "id" field was specified.
+		Bug fix: The result of POST /management/intrusion/status where intrusionFilter JSON specified "ioType" was 17 (areas) was fetching also io types 16 (zones) and 18 (Wired zones) even when "depthLevel" was default (0).
+		New Web API version: 1.5.2.
+	Offline encoding:
+		Comparison of offline data didn't work as expected. Have impact on blacklist and sometimes also ordinary cards.
+	Buanco:
+		Don't include deleted sites
+Version.3.7.1 15-12-2023
+	Hotfix GenMAP:
+		TechSecure length was incorrect inside the Smart-Intego lock. Hot fix in module TCCommonCardFormatDriver line 125. Will be reverted again in next version.
+		GenMAP Needs to reconfig the Smart-Intego lock with correct length
+Version.3.7.0 15-12-2023
+	Report "Unique access count (per company, location, day)", removed TechPoint column.
+	Task scheduler editor minor fixes.
+Version.3.6.1 14-12-2023
+	Task scheduler improvements (support for weekly and daily triggers) and bug fixes.
+Version.3.6.0 12-12-2023
+	Task scheduler:
+		- support for automated task execution
+		- currently supported triggers are: execute once and execute monthly.
+		- currently supported actions are: Execute report as CSV, Send result to specified email address using global configured email settings.
+Version.3.5.2 6-12-2023
+	Buanco:
+		Added feature for swapping CSN.
+		Implement site and access groups with start/end date
+	Master cache is now limited to max 1000 entries.
+Version.3.5.1 5-12-2023
+	Minor fixes for TPA IO 1
+	Optimized initializing of OSDP devices
+Version.3.5.0 3-12-2023
+	Added support for TPA-IO1.
+	Data modem and rt_tables. fixed problem with strange charaters in the rt_tables file
+	Doorweek program Permopen was canceled after changing the door settings
+	Buanco Integration:
+		Added property for automatick access group delete if they are not part of download.
+	Integrated:
+		Priority 1 cards can overrule APB if Property Overrule APB if prority 1 card is set on Thor settings
+Version.3.4.1 16-11-2023
+	Added report template: Unique access count (per company, location, day).
+	Added wall tamper and special SIA Message 9000.
+	Added SIA statistics.
+Version.3.4.0 
+	Improved event Web API; 
+		Added /events/clear POST method that can be used to clear one or more events or all events.
+		Added /events/static/types GET method for fetching static event types/tags configuration.
+		New Web API version 1.5.0.
+	Improved UI on Event log viewer (minor change in layout, showing different title when events are filtered).
+	Fix bug in DBPatcher. 
+	Fix bug where Display readers did'nt clear the interaction display. ( eg card not found )
+	Pressing enter while searching for cards will start seaching
+	New APB With Parking features.	
+	Tamper detection didn't work properly in larger cabinets for new IO4 board	
+	Global event webhook: Database patch to fix invalid default value of JSON filter (present until v3.0.0 - if webhook properties were ever saved).
+	Added Company name in card holder list and possibility for search in company names too.
+	Web API:
+		Bug fix: POST /management/intrusion was not respecting non explicit intrusion profile account under which is executed resulting in unsuccessful execution of intrusion command.
+		New Web API version 1.5.1.	
+Version.3.3.16 31-10-2023
+	Added new property for Enhance intrusion control.
+	Allow blocked doors did force Pincode. Reverted to orginal implementation where pincode is only required if weekprogram demands it
+Version.3.3.15 24-10-2023
+	Fixed bug with Card reused control. 
+	Card reused control didn't work for Convenntus Users
+	Bug fix in network editor: it was saving default/wrong value in case when "WPA supplicant (IEEE 802.1X)" (wpa supplicant related) tab was not clicked/activated.
+	Optimized Timeserver error detection ( DNS Server lookup )
+	Integrated:
+		Added orgin information to SIA Event if both SIA and MMP Debug is enabled
+Version.3.3.14 20-10-2023
+	Added support for SE EMV 54bit
+Version.3.3.13 19-10-2023
+	Cloud:
+		Improved DNS verification.
+	Web API:
+		Bug fix: POST /management/doors/status was not respecting specified "ids" in the “doorFilter”, it was always returning status for all doors.
+		Global web hook minor internal change, better handling of last processed event id.
+	Web user editor:
+		Empty user name was accepted.
+		Empty password was accepted when editing (but not during user creation).
+		Minor bug fix on "Remote access" tab, under "Door rights" sub tab, in case of large amount of doors, the "Default rights" combo box was almost inoperable/hidden.
+	Added Buanco Integration.
+	Minor adjustment to RS485 Linetest features
+Version.3.3.12 11-10-2023
+	Conventus:
+		Bug fix where card holder access week program with toggle function linked to a resource did not work for bookings (door would be auto closed soon after card swipe).
+Version.3.3.11 05-10-2023
+	TCSystemInformation.cpp get TechSysPatch could sometimes failed to load because of some locking violation within opkg;
+Version.3.3.10 04-10-2023
+	Integrated:
+		Elevator control was removed during implemtation of Keybox control. Reenable it again
+	Fixed database Sequence problem while inserting system_patch.215
+Version.3.3.9 02-10-2023
+	Web API bug fix; high API call frequency (especially over Cloud) could lead to Web/Web API freeze. For Cloud/API customers, this upgrade is highly recommended.
+	Global web hook was crashing in case debug flag DEBUG_WEBAPI (35) was enabled (typically not used in production).
+	Added posibility for downloading files for the Logfiles directory. Including Debug.txt files. Under Debug settings
+	Debug to file is now avaliable from the Web
+	Added console interface all applications inheriting from mainthread.			
+	Fixed Area Set/unset from subbusses.
+	
+Version.3.3.8 25-09-2023
+	APB:
+		Free selected person(s) didn't work
+	Global event webhook: 
+		JSON filter field validation on Web. 		
+	Web property editor, max length for long string fields (e.g. JSON filter) increased from default 100 to 512.
+Version.3.3.7 22-09-2023
+	Integrated:
+		Added SIA Detectors mails and Remote SIA Commands
+Version.3.3.6 19-09-2023
+	Card format 'TechSecure' with SE1090 version 2.32.0 was swapped. Adjustment code implemented.
+	Integrated:
+		SIA alarmtransmitter:
+			Detectors mails are now sent to the selected ThorBUS
+Versoin.3.3.5 14-09-2023
+	Integrated:
+		Added additional proximity format for card format 3
+Version.3.3.4 01-09-2023
+	Bug fix in Event filter editor, under "Filter entries" tab in case of choosing "New/Select from event log" menu item
+		and selecting target event detail, e.g. access granted to specific door, 
+		would delete existing filter entry where another event with the same type was specified, e.g. access granted for another door.
+	Added Intrusion Web API; 
+		Fetching zones, wired zones, areas, and area groups. Fetching intrusion profiles.
+		Intrusion management (get and set status).
+		New web api version 1.4.0.		
+	Intrusion "wired areas" renamed to "wired zones".
+	Card option [Allow Blocked doors] reqires pincode. Pincode wan't needed previously.
+	New Slim reader SE1360. Support for desfire encoding
+	Integrated:
+		Fixed RKP issue on a subbus.
+Version.3.3.3 07-08-2023
+	Bug fix for SMS and email event notifier consumers where upon creation all events from the event log beginning matching the filter would be sent.
+Version.3.3.2 
+	Additional reboot cause information was not save into the eventlog
+	Fixed bug for license counting with SE600 modules.
+Version.3.3.1 03-08-2023
+	Fixed bug in APB Allow access.
+	Fixed Zone list where new button didn't show Wired/Zone items
+	OSIRIS Alarm station type uses CL and OP for Set/Unset
+Version.3.3.0 26-07-2023
+	Implemented APB features.
+	Fixed Selected Intrusion profile was cleared on new copy. 
+	Intrusion type is now showed in zonelist
+	selecting Zone from area editor didn't show intrusion typew
+	Fix, Web, page System/Administration/TechPoints was showing selection toolbar.
+	SE readers supports Standard Mifare reading.
+Version.3.2.14 13-07-2023
+	Smart-Intego WO Input did only support importing Smart Handles. LN_I_SH. Supports all types now
+	Integrated:
+		Problem with Secure channel mode, when upgrading from 3.1 to 3.2
+		Changing RS485 settings deleted the Card database etc.
+Version.3.2.13 30-06-2023
+	SIA Transmitter:
+		Corrected SIA Packet modifiers
+		Create F1 CSR Type. It filters out SIA Text Messages
+Version.3.2.12 29-06-2023
+	SIA Transmitter.
+		Added account field for each transmitter if different Account number is needed
+Version.3.2.11 23-06-2023
+	SIA Transmitter:
+		OSIRIS Formating fixes
+Version.3.2.10 22-06-2023
+	Fix bug EventConsumerInterface 
+	Added property for handling Cidron CSN length
+Version.3.2.9 21-06-2023
+	Green led is now indication status of Datamodem. 2 flash means modem online and connected
+	SIA Transmitter:
+		OSIRIS doesn't send encrypted Account number in the ACK Message.
+		Added Checkbox for verifing Encrypted Account number. 
+Version.3.2.8 13-06-2023
+	Office mode weekprogram did not close the door after end period.
+	Added Cloud/Web API watchdog feature so instead of reboot, the action might be set to restart the processes instead.
+		Possible (not confirmed) fix for Web API deadlock. Added log for reporting non responding Web API process.
+		New web api version 1.3.1.	
+	Added logging of custom watchdog (de)activation actions, and process restart logs.
+	Fixed bug where reboot cause could be wrongly reported (overwritten by another reboot command).	
+	Master didn't treat e4Doormode correctly when receiver from a slave
+	Implemented maximum time a door can be set perm open. ( Door properties Max Perm Open time)
+	Conventus:
+		Removed midnight request as Conventus are facing trafic problems.
+Version.3.2.7 01-06-2023
+	Cloud API password policy generation changed so it is the same as for cloud remote browsing (decreased character set but increased size).
+	Cloud API logging of requested path and method in case of request timeout and error.
+	Uploading Save configuration failed because of Intrusion profile WP Links. this should not be uploaded
+	External IO Devices didn't delete outputlinks; 
+Version.3.2.6 31-05.2023
+	Added new Card format CSN as hex
+	Reverted Siedle prox format and prepared Siedle prox for OSDP.
+Version.3.2.5 30-05-2023
+	Cloud API watchdog logic modification; 
+		Call was considered success when API end point was reached but web API http result code was not taken into account;
+		now in order to reset watchdog (prevent reboot) both conditions must be satisfied: cloud invoke must be success and returned web API response must be 200 OK.
+Version.3.2.4 26-05-2023
+	Added Cloud/Web API watchdog feature; 
+		When activated system will be rebooted unless any successful API is invoked within configured timeout period. 
+		Please be careful when using the feature. For cloud API there is option to deactivate watchdog in case cloud address is unreachable (recommended).
+		New web api version 1.3.0.		
+	Bug fix, reboot event log is some cases might not have captured crash details.
+	Web, minor bug fix; when dialog containing list was shown, recently added row selection toolbar was not hidden.
+	Web, improved Event entries tab in Event filter dialog, bug fixes, added option to delete all and delete selected filter entries.	
+	RS485 Drivers. (OSDP/APERIO/DEISTER) Optimize cpu usage
+Version.3.2.3 10-05-2023
+	Added support for VEO reader
+	Fixed issue with OSDP readers and led control	
+Version.3.2.2 08-05-2022
+	Added webhook event notifier consumer. Changed event consumer thread model, now each consumer runs in separate thread.
+	Web API bug fix in method /management/simulatecardread: it could block if door process response is not received (due to internal error).
+	Dev note, techpointserver now compiled under c++ 11.
+	Fixed Door contact issue in Configuration Wizard
+Version.3.2.1 04-05-2023
+	Minor corrections for Cardformat XceedID
+	Added OSDP manufacturer ID for Schlage reader
+Version.3.2.0 02-05-2023
+	Fixed conversion issue between Siedle prox on Variobus and OSDP
+	Implemented new card format Schlage (XceedID)
+	Bug fix; Event filters editor was showing row selection toolbar (bug introduced in v3.1.14).
+	Added new report template "Baltic Pipe - card holder presence today" (based on existing "Card holder presence Today"), with minor difference that "Entry time" shows date without time part.
+	Improved database query speed for access rights (e.g. during card swipe); 
+		now system may support (without accounting for other parameters such as number of doors, device network size, event count, etc.) large amount of card holders/cards - tested with 500K card holders and 750K cards.
+	Added report "Door access rights" that shows doors, card holders, card numbers, and week programs that have configured access for door(s).
+	TechPoint internals - optimized memory usage for multiple TechPoint property sessions, most notably affecting the Web.
+	Dynamicaly created and assigned property link wasn't updated correctly if they was linked to newly created record. 
+	RS485 monitor didn't show the devices in all cases.	
+	Location area for readers when running integrated was swapped
+	Integrated:
+		Fixed Zone counting when move or free zones
+		Fixed AIMS Doorstatus from subbus
+		Minor correction for Global APB
+		Impl : GPI-PC with Global APB
+Version.3.1.16 28-03-2023		
+	Integrated:
+		Fixed zone counting 
+		Fixed Broadcast issue from subbus
+		Web, bug fix where, after opening set of pages and making a pause of 2 minutes, then starting to open a menu/page again would cause web to crash, the bug was introduced in v3.1.13.
+Version.3.1.15 22-03-2023
+	Web, Access Import/Export, Domains, support for moving card holders and cards (access rights are lost during move) from Default to another domain by administrator user.
+	Integrated:
+		Fixed Unset issue with GPIO when input was unset. Changes wasn't reuested from the CU. We now send them manually
+		Minitel supports now 100 inputs
+Version.3.1.14 15-03-2023
+	Access Import/Export, support for: 
+		Deletion of selected card holders, JSON export of selected card holders, JSON import of only card holders, JSON import of only card holders and cards.
+	Web, showing external ID on all editors (lower right corner) along with existing ID information (external ID can be assigned only during object creation using Web API).
+	Web API v1.2.0, support for external ID inside event details; in terms of JSON objects, JSON type for eventDetails.relatedRecord is changed from tableRecord to tableCrossRecord. Backward compatibility is preserved.
+	Implemented some missing AIMS Mails
+Version.3.1.13 06-03-2023
+	TGM Session ( GPI-PC) did sometimes fails to read from socket
+	Web memory usage optimization per session; 
+		opened pages (that are allowed to be cached) are kept in queue/cache (currently maximum 2 minutes from last usage) - the queue max size is calculated dynamically based on free memory (currently maximum is 30 pages). If there isn't enough memory, cache is disabled. Pages may be evicted from cache even before 2 minutes in case there isn't enough memory.
+Version.3.1.12 20-02-2023
+	Web API: management/simulatecardread was not working in case door was not on the Master.
+Version.3.1.11 08-02-2023
+	Web API,
+		Added /access/cardAccess PUT method that can be used to set access for multiple cards in single API call.
+		API version incremented to 1.1.0.
+		Bug fix; bug was introduced in v3.0.0 causing Web API not to return extId member (bug was in sql interface).
+		Added proper error in case API call was trying to insert duplicate external ID (extId).	
+Version.3.1.10 03-02-2023
+	Fixed bug in core sql interface:
+		The constuctor of the super class wan't called correctly and could lead into untilialized data
+Version.3.1.9 31-01-2023
+	Fixed bug in Domains implementation; 
+		the bug manifested when using Web API web hook causing other object properties not to be saved (e.g. reader properties) but also was affecting global system properties that could be linked to Domains. It is highly recommended for all customers running v3 to update.
+	Cloud, 
+		Added cloud connectivity test upon network error but also as management command "Test cloud connectivity.." on Cloud settings page (System/Administration/Cloud),
+		improved cloud error messages. 
+	Fixed slow respons time for Digital input 3 and 4
+Version.3.1.8 25-01-2023
+	Cloud, Added cloud service management (service restart and data reset) on Cloud settings page (System/Administration/Cloud). 
+	Datamodem can now act as primary network adaptor.
+	Monitoring Datamodem traffic and check connection if no traffic
+Version.3.1.7 20-01-2023
+	Cloud bug fixes:
+		Suppressed repeated cloud errors.
+		The bug where cloud property sync would fail due to duplicated username entries which could happen in case cloud service was not running and web user was deleted and recreated again.
+		The bug where cloud user sync would not be performed immediately in case username change.
+	Cloud, 
+		Added cloud service status on Cloud settings page (System/Administration/Cloud). 
+		Added a warning on user dialog when cloud configuration is created while cloud service is not connected.		
+	Event Filters/Transmitter ( EMail/SMS )
+		Implemented
+	New door property Activate All elevator output if door perm open
+Version.3.1.6 12-01-2023
+	Fixed issue where it was impossible to create new web user in the integrated version
+	Rotated/Changed web root password reset RSA x509 public key certificate.
+Version.3.1.5 12-01-2023
+	Web, added door filtering on page "Access granted events. Last half day" under "Log/Report"/"Access log" menu.
+Version.3.1.4 04-01-2023
+	Integrated:
+		Fix bug with creation of ATX device
+		Fix APB but where zoneshift was sent as Lan broadcast
+		Fix for HID Buzzing problem is reimplemented
+Version.3.1.3 21-12-2022
+	Added debug feature for datamodem
+	datamodem can not run without APN.
+Version.3.1.2 20-12-2022
+	Added new cardformat EMV where Credit number is presented in a human readable format. (Conlan EMV is swapped)
+	Operator log entry didn't show object name if it was an globel property settings.
+	Readers flash orange/Amber if Antipassback error
+	SIA Transmitter didn't create default filters.
+	Mistake with Intrusion profile patch and integrated
+	Fixed integrated issue where subbus mapped readers didn't work.
+Version.3.1.1 15-11-2022
+	Support IO4 board for all variant types
+Version.3.1.0 
+	Support IO4 boards for all Types
+	Intrusion Profiles added.
+	Support for Data modem
+	Desfire encoding. If we only read from the card, then Close card wans't called. ( not important because the reader will close after 1 sec )
+	Changing IP address for SimonsVoss gateway could lead into license violation
+	Support for Relay Droid (tm)
+	Fixed bug in database if connections was reused.
+Version.3.0.1 13-10-2022
+	Replacing static built-in web TLS certificate (public/private key pair) on startup with on-the-fly generated self-signed certificate
+	(unique private key will exist only on the device) with certificate common name set to the device hostname.	
+	In multi TechPoint environment, when TechPoint is deleted from the network with selected option of deleting related records,
+	it would fail to remove access rights references to the deleted doors - the fix includes access rights cleanup script.
+	Web root password reset secured with RSA x509 public key crypto. The password reset can be disabled by setting the option "Allow forgotten root web password reset from login page"
+	to false on System Settings/Administration/System Properties/Common Properties page under Security tab.
+Version.3.0.0 27-09-2022
+	New feature named "Domains";
+	The domain is named entity which logically groups various system objects (card holders, cards, week programs, access groups, 
+	including Web API/Cloud API) and settings so they can be shared among domain members (users) and invisible to users belonging to another Domain. 
+	This provides ability to share the same access system by multiple parties in a clean way. 	
+Version.2.13.5 21-10-2022
+	Added Max clock drift for Thor integration
+Version.2.13.4 13-10-2022
+	Creates additional minitel output when saving minitel device.
+Version.2.13.3 10-10-2022
+	Fixed issue with minitel and update after restart
+	Fixed GPIO issue and Tamper/Active
+	Fixed Web issue with seeing tamper mapping
+Version.2.13.2 
+	Vanderbilt Bluetooth reader runs with none standard secure channel key. We have noew disable secure channel for specific device
+Version.2.13.1 15-09-2022
+	IEEE 802.1X (wpa supplicant) support for certificates signed by intermediate CAs 
+	(added checkbox field "Skip uploaded certificate verification against the root CA (useful in case certificate is signed by child CA)").
+Version.2.13.0 07-09-2022
+	Support for Eurocard/Mastercard reading from a conlan reader. Use TechSolutions/RawData (binary)
+	Integrated:
+		Updaing from version below 2 did not work as expected.
+		Minitel and GPI-IO have now possibility for adding Tamper input
+		Adding SIA Event tag for access Alarm transmission.
+		Fixed bug where Master was trying to send changes but the slave was waiting for master connection.
+Version.2.12.12.HOTFIX 05-10-2022
+	DESfire encoding didn't work if offline license wan't present
+Version.2.12.11 22-08-2022
+	Fixed sync problem when switching production version on SDCard
+Version.2.12.10
+	IEEE 802.1X (wpa supplicant) re-authentication support.
+Version.2.12.9 29-07-2022
+	Salto-SHIP
+		Saltoship events did also include Fail to encode member
+	Requires TechSysPatch 1.3 for WPA supplication support
+Version.2.12.8 14-07-2022
+	Siedle new manuals (minor change).
+	Web, bug fix where download link would not show for English help file.
+	IEEE 802.1X (wpa supplicant) support for more cert fields (country code, province, city, org, org unit), reauthentication issue not yet solved.
+Version.2.12.7 13-07-2022
+	New manuals
+Version.2.12.6 11-07-2022
+	Fixed bug in Intrusion login. 
+Version.2.12.5 05-07-2022
+	Minor adjustment for USB encoder/Learning reader
+Version.2.12.4 30-06-2022
+	Siedle #325, Web, System/Monitor/IO page, expanding certain nodes (Elevators, intrusion alarm outputs and keybox groups) would cause web crash (in case multi techpoint environment).
+	Siedle #326 JSON export/import did not cover floor selection. 
+		Additionally, added support for JSON export/import Keybox access right links and support for Keybox card holders/cards (including card valid from/to fields).
+	IEEE 802.1X (wpa supplicant) improvements in setup workflow, showing certificate status and more, 
+	factory reset will disable wpa startup, the functionality is disabled for Siedle (for non admins) and more.
+	#328. Eventlog card holder name lookup didn't refresh the cache when card holders were changed
+Version.2.12.3 23-06-2022
+	ThorDeviceEditor allows now Bridge and reader creating with address 0
+	firmware file: patch.version is now included in the signed firmware file.
+	New SE Reader 1044 implemented. DESFire Offline Capabilities adjusted
+	Integrated:
+		Increased Minitel output to 40.
+Version.2.12.2 17-06-2022
+	Entry/Exit areas was not saved when creating a new door
+Version.2.12.1
+	Siedle #324, Web, translation issue in controller finder where column "Newly found" was not translated correctly in German and "English (Germany)".
+	Siedle #323, Web, "TechPoint" name was not translated in editors when device is in non-standalone mode.
+	Siedle #322, Web, Floor list, "Delete all" function was not using database transaction properly which might cause delete to fail. Simillar issue was also in keybox list.
+	Secure channel was not working for OSDP IO Modules. 
+	SIA Transmitter didn't work in Master slave env
+Version.2.12.0
+	Report template "Card holder presence Today" modified so it does not need parameters 
+	(When using this report assumption is that all readers in the system are entry/exit readers for the site - no other internal readers inside).
+	Siedle # 288. Pincode misused 
+Version.2.11.3
+	IO4/IO2 Detection didn't work correctly when updaing from a lower SC600 version.
+Version.2.11.2 31-05-2022
+	Siedle #309 (refix with translation file v107), translation mistake. 
+	Cloud, updated Microsoft Azure IoT Hub CAs (Certificate Authorities) as required by latest guideline from Microsoft;
+	added CA "DigiCert Global Root G2" (required from February 15, 2023).
+	Siedle #304, When importing JSON access rights, the final report about imported access group would show total imported access groups count without
+		taking into account that some access groups are used as individual access rights. Now two numbers are shown: "access group(s)" and "card specific access right(s)".
+	Added support for 802.1x ( wpa supplicant )
+Version.2.11.1 23-05-2022
+	Siedle 
+		#277, German Umlauts were not shown in SC sync info, in firmware upload, and in card editor info field.
+		#272, Door I/O 5 to 12 were not translatable, the translation text is now included in translation file v103 
+		(but not yet translated - expecting the translation to be available in subsequent translation files). Some other I/O related text is also added for translation.
+		#309, was mistake in "English (Germany)" end German translation where "(Door 1-4)" was mentioned (text portion is now removed - from translation file v103).
+		Related to Siedle #313, Intrusion (under System/System setting/Administration) menu was visible for Service user, but the reason was a typo in intrusion id definition.		
+	Fixed Block panel issue incase of pincode misused (#288)
+Version.2.11.0 19-05-2022
+	Siedle #302, "Native" language renamed to "English (Denmark)", "English" renamed to "English (Germany)" (applied to translation file v102).
+		On Language settings page languages are now ordered by name.
+	Siedle #312,#311,#315,#275. License and loading problems with SecureExtension
+	Siedle #313 and #314, changed built-in Service user rights: removed menus Areas, Zones and Auto set week programs (under Configuration/Architecture),
+		added menus External inputs, External outputs (under Configuration/IO).
+	Siedle #236, Support for translation file versioning; 
+		Showing version number field "Translation file version" under System/System settings/Administration on 
+		Firware page and on Laguage setttings page. 
+		Translation tool upgraded to v0.2.0 with support for automatic version increment upon file save. 
+		The version is single number (e.g. 100). 
+		The version number for old translation file formats that dont have version information will be displayed as version 0.	
+Version.2.10.14 13-05-2022
+	Fixed fatal error in server if WireArea or external IP inputs was defined. Was intruduced in version 2.10.13
+Version.2.10.13 04-05-2022
+	Speeding up Boardtest during production
+	Serial API is not possible if running http. Pressing Connect USB device will now check for https:
+	General Purpose wp could cause techpoint server restart.
+Version.2.10.12 28-04-2022
+	2Door/4Door board wasn't detected correctly just after production test. Target did require additional restart
+	Integrated: 
+		Mapped readers didn't receive Area/Zone status changes (Broadcast error )
+		APB Zone was default Entry zone. Now changed to exit zone
+Version.2.10.11 25-04-2022
+	Siedle #308, Global translation "Are you sure you want to delete the object?" was wrong in English and German.
+	Siedle #300, Web, JSON card holder import was creating duplicate entires (access groups, week programs, card holders) in the following scenario: create access group (or wp or cardholder), do JSON export, then delete access group, then import JSON, then import JSON again.
+	Reader Multidoor mode now implemented for Conventus
+Version.2.10.10 1-04-2022
+	Integrated:
+		Could not set/Unset intrusion
+Version.2.10.9 29-03-2022
+	TechSecure format wasn't loaded correctly
+Version.2.10.8
+	Siedle, #282 (refix), license sync from Slave to Master (after you add Slave to Master) was not working in ~20% cases (as reported) until Master is restarted 
+	(furthermore, license loss on Slave after Slave is imported to Master could happen), 
+	the previous fix did cover the case when license is added to Slave while it is part of Master/Slave environment.
+	Siedle #297, Web, Card holder week program deletion was not removing references in access group rights which might cause card holder JSON import (that were just exported) to fail.
+	Cloud, bug fix, In case user name change (in Web user editor), cloud access would be impossible for the user.
+	Door management actions event log including the request origin information (Web API/Cloud).
+Version.2.10.7 22-03-2022
+	Mifare offline encoding problem fixed.
+Version.2.10.6 17-03-2022
+	Siedle, #285, Web, TechPoint editor, there was confusion between Delete button and option "Remove as Slave" in multi techpoint environment,
+	now only Delete option is present - And in case Slave is deleted on Master, the delete confirmation dialog displays checkbox "Delete object reference on the Master for this Slave"
+	(default checked) which controls whether the reference to the Slave will be removed from Master’s database.
+	USB connection was not always closed correctly
+Version.2.10.5 11-03-2022
+	Siedle #189, CSV import error report line number was incorrect, now line 2 is the first line with data in the file (column header is line 1).
+	Siedle, #282, license sync from Slave to Master (after you activate license on the Slave) was not working properly for existing licenses (e.g. if door license number is increased) until Master is restarted.
+	Web Api, v0.9.4, POST to config/doors/filter with specified 'ids' inside 'doorFilter' was not appling the filter.
+	Minor correct for Offline system and USB encoder/Learning reader
+Version.2.10.4 09-03-2022
+	Siedle #287, Web, Door editor option "Warning time (s)" misunderstanding fixed by changing the translation for English ("Warning delay (s)") and German.
+	Siedle #278, Web, Alerts (on rights side) were showing incorrect event time and incorrect date/time formatting.
+	Siedle #289, Web, Door editor property "Log card on door open" renamed to clarify the real meaning to "Log card access only on door open", German and English translation updated as well.
+	Siedle #283, Door editor wouldn't allow any changes to be saved reporting about license exceeded error (the bug was introduced in v2.9.0).
+	Siedle #288, Pincode misued didn't work as expected.
+	Siedle #290, Alerts did also show alarms which wasn't the intension. Door Forced/Held wasn't cleared correctly
+	Added Idor desfire format.
+	Added support for USB learning reader and CSN format
+Version.2.10.3 03-03-2022
+	Web, Login screen, fixing security issue 2.12 "Login mask reveals password limits".
+	Web, Week program editor, previous fix of Siedle #174 (in v2.6.0) introduced a bug (e.g. sequence of on/off periods in general purpose week program editor could not be applied properly).
+	Minor improvement for USB encoder
+Version.2.10.2 24-02-2022
+	Web, in System/Administration/Access/Settings menu, the "Card format" field had to be specified on "USB Mifare/DESfire encoder" tab even when "Use USB Encoder" was false (unchecked).
+	Siedle, #189, translation missing in German for csv import error "column is missing".
+	Intrusion: Added property for automatic intrusion postpone when card are presented
+	Integrated: Mail ack not sent on bus broadcast mail
+Version.2.10.1
+	Siedle summary bug fixed:
+		#190, #195, #253, #255, #259, #260, #264, #265
+	#190, Web, When activating new language (Sytstem/Administration/Language page) if you answer No when asked to restart you will not be asked again even if you change the language again, The fix ensures that user is always asked for restart when new language is selected and user is clicking on "Activate language".
+	#195, Web, When German language is selected the footer company web link was international (.com), now it is .de (siedle.de).
+	#253, Web, Siedle Service user menu rights updated according to request; Added menus: External I/O Devices, Architecture, Floors, Elevators, Zones, Areas, Auto set week programs. Removed menus: Keybox, Keybox groups, Keyboxes.
+	#255, Web, In door editor, in "Card properties" tab, the option "Antipass Back mode" was visible although APB should not be available until fully implemented.
+	#259, Web, Card holder import was not showing progress bar.
+	#260, When DHCP is activated, the configured host name was not sent to the router. The issue will be fixed only after additional reboot: after you upgrade, you need to do 1 extra reboot in order for the fix to take effect. Note that host name can't be announced to the router in the case of static IP configuration (DHCP off).
+	#264, Web, In user account editor, if system account (Service, Facility) was assigned Administrator role - it could not be removed later.	
+	#265, Web, Siedle Facility user menu rights updated according to request - added access to menu Special days (and other intermediate menu nodes).
+	Bug in Wirearea config. Changing the Intrusion types wasn't saved. Workaround is change the Name of the wirearea.
+	AICS connection didn't work
+	GPIO/Minitel as remote mapped devices is now possible
+		
+Version.2.9.1 01-02-2022
+	Minor Offline adjustments (desfire)
+Version.2.9.0 27-01-2022
+	Added support for Secure extension modules.
+Version.2.8.4 25-01-2022
+	Web, Siedle #250, in Holiday editor web crash could be caused if date field was empty.
+	Minor inprovment for Offline encoding
+Version.2.8.3 17-01-2022
+	Static weekprograms wasn't declared correctly for master/slave
+	Changing door weekprogram on the door didn't work proberly.
+Version.2.8.2 12-01-2022
+	Holday periods across newyear didn't work.
+	Integrated:	
+		Version 2.8.1 would fail to installed if the database was deleted
+		
+Version.2.8.1 06-01-2022
+	Thor Integration:
+		Wan broadcast
+		Minor Sia changes
+		Correct Minitel bug
+Version.2.8.0 22-12-2021
+	Web, Activity link button (e.g. on door managment page) would not show the latest events (older events would be shown instead).
+	System-House solutions reader VEO is added as an valid OSDP device
+	Added new Reader feature [Mode2] where all leds are off when door is closed/secured
+	Web, Cloud phone app rights fix, in v2.6.0 a bug was introduced where cloud door management right was removed preventing a phone app user to manage a door (e.g. open/close door).
+	Web, Reports containing date parameter with equality operator (e.g. Event time = 04/11/2021) would not show any data.
+	Improved web resource import error handling during web startup(s) after firmware upgrade:
+		added fallback resources (previously resource import error led to unusable web UI), 
+		added fallback resource usage warning on login screen,
+		in case of fallback all images are displayed in grayscale (as error indicator),
+		note that these changes do not affect existing behavior if everything is ok.
+	TechSolutions internal (translation loader fix for Thor release).
+	Integrated: Settings for cardsless access wasn't possible in the integrated version
+	Fixed bug in sync manager, where master continues to be in sendchanges state. 
+	Added new card driver for Capgemini
+	Validating offline settings.
+	Added SIA transmission for the integrated version
+Version.2.7.4 01-12-2021
+	Fixed bug in sync manager, where master continues to be in sendchanges state. 
+	Fixed bug in conventus integrations where week program selection was not treatet correctly
+Version.2.7.3 12-11-2011
+	Web API, when ext id was used for objects creation (e.g. card holder), after object deletion ext id was not deleted which would cause subsequent insertion of the same ext id to fail.
+Version.2.7.2 10-11-2021
+	Fixed Smart intogo problem with Perm relase and lastcardmail
+Version.2.7.1 29-10-2021
+	German translation updated.
+	Siedle #223, The leading zeros on card number were not logged correctly (e.g. card number 00123 was logged as 123).
+	Conventus: Added new feature for Exclusive resource Booking.
+Version.2.7.0
+	Siedle summary bug fixed:
+		#118, #131, #134, #139, #151, #158, #185, #206, #215, #244
+	#118, Web, Reports were ordered by datetime, now changed to datetime desc.
+	#131, Web, Siedle only: changed text in About page so it is international.
+	#134, Web, Card holder editor, added warning message when inserting duplicated card holder name.
+	#139, Web, in alert side bar, "Discard all" button was not shown properly in German language, Alert side bar is more compact now.
+	#151, Web, Door editor, under "Card properties" was showing fields "Card reused control" and "Card reused timeout (sec)" 
+		but this functionality is not implemented in Complete version, it can be only used in Thorguard build/APB, s these fields are not shown anymore.
+	#158, Web, Changed title in all editors when creating new object (e.g. instead "New User", it now says "Creating new User").	
+	#185, Web, reported as: Refresh button gets stuck visually; The issue was that all buttons stay focused after click, this is changed but only for Siedle.
+	#206, Web, In black theme column separation line was not visible in view tables (e.g. door list).
+	#215, Web date entry was allowing the year after 2037 (related to Y2k38), this is no longer allowed and appropriate warning is shown.
+	#244, After factory reset (1 out 10 attempts)/restart, there were only two door licenses left even it is 4 IO door bard, It should be solved by: Detection of IO Board type is moved to watchdog process, to secure correct detection.
+	Added index to properties for speeding up door deleting.	
+	Siedle Vario bus: Default polling set to 180 sec
+Version.2.6.4
+	Smart-Intego: Maximum random timeout is now limited to max 10sec
+	OSDP-IO: Input is not stimulated if running digital mode and case tamper is active
+Version.2.6.3	
+	Siedle #213, In web dialog factory reset dialog final warning, the warning text was not properly displayed in Firefox.
+	Web, some web resources were missing (e.g. question mark in dialogs).
+	New Desfire card format: TechPoint Secure
+	Reader tamper event didn't have Door link
+	Minor changes in smart-intego lock handling
+	User claims. Removed activity link from Card list and doors if user haven't got access to eventlog
+	Smart-Intego: In case of lock inconsistency then we try sends LNI-Resync the problem.
+	Case tamper on OSDP IO Module wan't updated correctly which affected the actual state of inputs
+	Optimized Whitelist calculation.
+	Bug fix, in Web user editor, on Quick card holder management tab, "Enable web" field was not shown (and would cause web crash).	
+	Siedle #224, In door editor in Equation tab, the equation formula list was not horizontally scrollable.
+	Siedle #155, Report PDF export did not properly show UTF8 characters, Changed pdf orientation to landscape.	
+Version.2.6.2 07-10-2021
+	Static_Intrusion_type caused the server to crash if running as slave. Missing DB Property
+Version.2.6.1 06-10-2021
+	Siedle summary bug fixed: 
+		#157, #159, #42
+	#42, Time editor was not complaining when entering invalid hours.
+	#157, In card rights editor in Door/Week program mode, week program combo box inside table was appearing 
+		as regular text and not something that is editable - now it is shown as clickable link with proper combo box drop down icon when selected.
+		The similar issue is also fixed on web user editor when editing cloud object rights. Global link color for black theme is set to blue.
+	#159, In week program editor, "Copy to" button's popup menu was not showing properly.
+	SmartIntego Fix.
+		Sabotage wasn't always reset during startup
+		Device QOS wasn't updated before Alive mail from the lock
+		Simulated Card read from API didn't release the Lock
+Version.2.6.0
+	Siedle #174 bug fix: In week program editor, when editing day's periods, 
+		the use case of adding overlapping function was not handled correctly.	
+	Web API v0.9.3:
+		Support for access card's options field (read/write).
+		Added /management/simulatecardread method which can be used to simulate card read on specific door remotely 
+		causing the door to open if the card has proper access rights. Breaking change: endpoint test/cardread and 
+		testCardRead object are removed (if you were using it, 
+		simply rename the end point and in your POST, rename "testCardRead" to "simulateCardRead").
+		Bug fix, the result of methods access/cardHolders/filter and access/cards/filter did not include extId field.
+		Bug fix, card number insert/update was missing duplicate card number check.		
+		Bug fix, in user editor, when assigning rights for specific Web API methods, not all API methods were shown.
+	Optimized Whitelist calculation.
+	Minor Bug fixing in Smart-Intego Wireless locks
+	Add index to common_properties (system_patch.211)	
+	Bug fix, Door control week program editor on "Assign to doors" tab did not show full door list in case of large amount of doors.		
+	ASyncDBJob failed to insert if queue only contains high priority jobs
+	Fixing issue with Smart-Intego csv import
+	Siedle summary bug fixed: 
+		#55, #165, #189, #201,#203, #208, #218, #220, #221, #225, #228, #237:
+	#55, Support for naming special week days (menu System/Administration/Access/Week days).
+	#165, In card rights editor, week programme overview title did not show UTF8 properly.
+	#189, Card holder CSV import was accepting empty card holder first name.
+	#201, Minor German translation issue (The word reader is missing in step 2 of the wizard).
+	#203, In card holder editor under cards tab, it was possible to create many empty card entries which was confusing, This is changed
+		so that only single empty entry is allowed (unless created by new copy) and 
+		empty entry is not displayed as blank but rather with title "Enter card number".	
+	#208, Report editor bug fix, when empty report param was added (no column selection), 
+		the input was not properly validated resulting in error during the report execution. Improved report param validation.		
+	#218, IO objects (inputs, outputs, equations) created during Door/reader creation while active language was not English/native,
+		would not be translated when language is switched to English/native.
+	#220, In week program editor, Edit button for system/readonly week program is now hidden.
+	#221, Database upload/restore dialog now showing files with filtered extension (sqlite3), 
+		the other upload dialogs are changed as well to support similar (json, xml, csv).	
+	#225, improved functionality of deleting all card holders ("Delete all card holders.." button under Access Import/Export):
+		deletion in smaller batches, better handling of database transaction locking, better progress reporting,
+		added option to cancel the deletion, added dialog asking to restart the deletion in case of error.		
+	#228, Help file download from login page.
+	#237, Support for multiple help files (languages), 
+		showing popup context menu when help icon is clicked on main page so that user can choose help file in appropriate language.						
+Version.2.5.0 06-09-2021
+	Conventus, respecting pre-open and pre-clode unit settings in case of bookings with credentials.
+	Conventus: Unit property Always perm on booking didn't work as expected
+	Siedle: Implemented Poll configuration for Vario Bus
+ 	Hide APB settings on area configuration
+Version.2.4.5 31-08-2021
+	Bug fix, old eSIETechVariant license was not treated as Siedle whitelabel.
+	Cloud license v2: 
+		Separated licenses for: Cloud, Cloud Phone App, Cloud API, Cloud Remote Web Browsing. 
+		Existing Cloud licenses (v1) will be automatically upgraded to v2.
+		If Cloud license is activated, Cloud Phone App license will be as well.
+		If Cloud API license is activated, Web API license will be as well.		
+	Cloud API: added checks for max response size (currently Azure is allowing max 128KB for direct method payload).
+	Cloud API bug fix: in rare case of device method failure (e.g. web process not running), the method would break causing general IoT Hub timeout error instead of proper error code (the error would be reported to the cloud client as general error 100501).
+	Conventus integration: added deletion of bookings and subbookings that are no longer present in full sync (only "accessors" were covered in previous version), added delay (5 minutes) in case of server error while issuing full data reqeust (prevous implementation would issue too many requests in short period).
+	Optimized door Monitor view.
+Version.2.4.4 09-07-2021
+	Optimized Door monitoring.
+	Added Desfire/Mifare key generation.
+	Remove Default Offline key to secure the user always will choose a unique key.
+Version.2.4.3 09-07-2021
+	Fix bug in desfire encoder. Card was not updated correctly
+Version.2.4.2 21-06-2021
+	Optimized Whitelist card handling.
+	Added limitation check for offline lock when saving access groups.
+	*# from SE Readers wasnt treaded correcly.
+	Postpone time was always 10 min regardless of autoset wp. 
+	Conventus Resource wp link wasn't deleted  when card holder wp was deleted.
+	Offline: Blacklist card didn't use AreaID
+	Added Feature for Conventus: Toggle close after booking can now be set on Conventus integration
+	Adding New Intrusion action input type. Suppress Autoset WP.
+	Improved startup time.
+	Optimized property load.
+	Optimized Whitelist handling
+Version.2.4.1 07-06-2021
+	Offline: Black card list didn't load AreaID.
+	if upgrading from version 2.2.15 or newer and last update required swap csn, then it is nessesary to remove swap csn again.
+Version.2.4.0.03.06-2021
+	Added Feature for Conventus: Toggle close after booking can now be set on Conventus integration
+	Conventus Resource wp link wasn't deleted  when card holder wp was deleted.
+Version.2.3.3 03-06-2021
+	Desfire encoding improvement	
+	Check code Phy malfunction
+Version.2.3.2 01-06-2021
+	Minor Production Test Interface changes.
+Version.2.3.1 26-05-2021
+	Bug fix. valid from/to on access group links was not respected in actual card access check.
+	Bug fixed for access feature 1. 
+	Bug:	Access option [Allow blocked door] in combination with Blocked doors, did grant access.
+	Conventus:
+		Support for Unlocked option ( adgang)
+Version.2.2.20 08-05-2021
+	Fixed reboot problem. ( Requires TechSysPatch.1.1 )
+Version.2.2.19 07-05-2021
+	Reboot fix.
+Version.2.2.18 05-05-2021
+	Web, bug fix, better warning messages about restart (network settings, firmware page, database restore), Siedle #202.
+	External input from Devices couldn't be inverted,
+	Added additional notification while encoding offline cards
+	New Autoset features.
+Version.2.2.17 03-05-2021
+	Siedle summary bug fixed: 
+		#74, #143, #166, #167, #168, #169, #176, #177, #200, #202, #204.
+	Web, bug fixes in login, Siedle #166, password change was not required for root user on first login.
+	Web, bug fixes in login, Siedle #167, password change dialog could be skipped by pressing Esc button.
+	Web, bug fixes in login, Siedle #168, password change dialog would accept existing password as valid.
+	Web, bug fixes in login, Siedle #169, incorrect error message was shown in case of new password and new entered password are different.
+	Web, bug fixes in login, Siedle #176, when pressing on "Forgot password" button the message was not displaying german umlauts and there was no contact information (now support email is shown).	
+	Web, bug fix, in card holder editor when card list increases over 6 cards, the toolbar buttons (add/newcopy/remove) start to shrink (Siedle #204)
+	Web, bug fix, in TechPoint editor warning message was missing for actions that will cause Slave configuration deletion (Siedle #200).
+	Web, bug fix, in TechPoint editor some fields like Name were editable on the Slave (Siedle #143).
+	Web, improvement in TechPoint editor, online status and sync information fields are highlighted and auto refreshed (every 5 seconds).
+	Bug fix, wrong message was displayed on Slave when Master is offline ("Slave offline"), now changed to "Offline" (Siedle #177).
+	Web, bug fix, when system restart button is clicked the wait dialog is immediately closed instead of waiting for restart to complete (Siedle #74/#202).
+Version.2.2.16 	
+	Fixed Sidle ELM restart procedure.	
+Version.2.2.15
+	Web, bug fix, reports CSV export was missing UTF8 "bom" header (thus not properly opened by Excel)(partial fix of Siedle #155).
+	Web, minor change in web footer (smaller text version bolded).
+	Web, TechPoint Finder dialog no longer reports conflict if found host name is different than the name in database, other fields are still checked (related to Siedle #153).
+	Bug fix: synchronization would randomly fail with error "Different master detected" (related to Siedle #153).
+	Web, bug fix: week program editor was unable to deal with duplicated entries and duplicated entry would cause further duplication.
+	Web API (0.9.2), improvement in week program duplication checks, wp day count increased.
+	Added support for OSDP reader Vanderbilt reader type VR20M-MF
+	Fixed bug with Hisec HID Prox reading
+	Fixed Vario bus problems.
+Version.2.2.14 19-04-2021
+	Siedle summary bug fixed: 
+		#42, #82, #88, #94, #99, #126, #132, #137.
+	Web, bug fix, under System/Administration/Time, the date/time format was not validated (Siedle #42).
+	Web, bug fix, dialog with long text (e.g. factory reset warning) would be shown in single line in Firefox and could expand out of web app area (Siedle #137).
+	Card type property "Native" renamed to "Native card type" - a workaround for translation issue (Siedle #132).
+	Siedle, Web, disabled "Quick card holder management" claim selection in user editor, for non admin user (Siedle #126).
+	Web, bug fix, configuration wizard was missing close warning (Siedle #88).
+	Report template translation (Siedle #99 and #82).
+	Improvement, Web, added cancallable system restart countdown dialog after firmware upload (related to Siedle #94).
+	Bug fix: Web, firmware upload would make web unusable (resources not loaded) until restart (related to Siedle #94).
+	Production test features.
+Version.2.2.13 08-04-2021
+	Siedle summary bug fixed: 
+		#64, #54, #56, #57, #60, #68, #84, #98, #108, #114, #115.
+	Details:
+	Siedle, Web, fixed inconsistent menu name for secure controller ("SC-600s" was used instead of "Secure Controller", #60 point 1.).
+	Bug fix: Web, under System/Administration "System settings" renamed to "Language settings" (Siedle reported #60 points 2a and 2b).
+	Web, support for web framework text translation (e.g. calendar) - added German translation (Siedle reported #56 bug fixed).
+	Siedle, Web, disabled Service and Facility user deletion.
+	Siedle default property values (#108).
+	Web, factory reset (Siedle #84) implemented on Sytem/Administration/Firmware page, firmware page realigned. 
+	Web, default text field length increased from approx. 17 to approx. 20 characters (Siedle: #57).
+	Translations bug fixes (Siedle reported under #54, #68, #98, #114, #115).
+	Translation file load bug fix (Siedle #64 fix): translation file contained "<space/>" elements which were not loaded correctly.	
+	VarioBus improvement.
+	CSV import errors will now show the line number the error occured
+Version.2.2.12 31-03-2021
+	Bug fix, Web, web resources import would fail in case of present resources/tmp folder.
+	Siedle only (reported under #112): Web, hiding Instant access settings under System/Administration/Access/Settings.
+	Improvement: handling of web root password change in database patch.
+	Added Hardware Factory reset by using the user button on mainboard
+Version.2.2.11 25-03-2021
+	Bug fix (introduced in 2.2.9): on database restore, root password hash was not properly handled. 
+	Production test for IO4-Board implemented
+Version.2.2.10 24-03-2021
+	Added new translation and user guide
+Version.2.2.9 23-03-2021
+	Bug fix: Web, system week program names could not be translated (reported by Siedle under #81).
+	Siedle (reported under #76): Web, non admin users can see only certain subset of menus (defined by Siedle).
+	Bug fix: Web, non admin users can't see admin users, non admin users can't create admin user.
+	Report: "Card holder presence Today (requires adv. params)"
+	Bug fix: Web, configuration wizard (Siedle reported #103), Changes in door selecton for existing readers were not saved.
+	Bug fix: Web configuration door list, Dialog for Smart intego csv import was not shown correctly.
+	Bug fix: Web, some images (plus, minus) were not loaded after you switch web theme.
+	Bug fix: inconsistent event type names were stored in database. 
+	Bug fix: Importing Slave config didn't work
+	Bug fix. Importing an master/slave database into a controller which was not part of the configuration didn't work. Restoring of this kind is now refused.
+	Added Led behavior for DTU-Space
+Version.2.2.8 03-03-2021
+	Web: Bug fix in configuration Wizard, when pressing Back from Reader step to Doors and creating new door and after proceeding to Reader tab atain, the door list would not be refreshed.
+	Web (Siedle reported): Bug fixed in configuration Wizard when Slave is selected and Advanced reader editor is opened resources such as Doors would be fetched from Master instead from Slave resulting in unexpected reader editor state.
+	Fixed restart problem with ELM device
+Version.2.2.7 26-02-2021
+	Web resources import bug fix.
+	Improved Siedle Vario-Bus. Fixed bug with COM on address 3 which sometimes did forget to stuff Dest address.
+	Fixed ELM bug. ELM Needs to be software restarted after power on of the controller.
+	Correct Valid to bug for conventus booking and offline locks
+Version.2.2.6 22-02-2021
+	License bug fix (on 4door IO board running as standalone with default door license, only 2 doors were allowed).
+	Web (Siedle reported): 
+		Valid from/to validation was not working properly, 
+		Configuration/IO list sort by name, 
+		Card dialog options tab column width inreased, 
+		Configuration wizard siedle vario reader bus unique address check was working only when running in standalone mode, 
+		Configuration wizard when reader editor for Slave was shown by clicking on "Advanced editor.." button it was unable to load properties (from Slave).
+	Siedle: Service user rights update (removed print rights, added Access settings).
+	Improved cloud connection retry mechanism.
+	Added new Software output Daylight saving.
+	Hide TechPoint Find button if controller isn't running as master
+Version.2.2.5 09-02-2021
+	Panel timeout wasn't refreshed during Intrusion commands
+	Cloud failed to reconnect.
+	HTTPS certificate validation was not working in Conventus and Web API Web Hook (invalid TLS CA bundle path file was used).
+Version.2.2.4 04-02-2021
+	Web: Hiding Online Management menu if Intrusion is disabled, bug fix: firmware upload progress dialog was not auto closed.
+	Added buzzer indication if Offline integration wasn't able to encode the card
+Version.2.2.3 02-02-2021
+	Siedle reported bugs.
+	Fixed issue with Door relay 1 and 2.
+	Fixed missing translation for IO new IOBoard
+Version.2.2.2 21-01-2021	
+	Web:
+	Siedle related; Service web user rights update, Configuration Wizard reader defaults, scroll bars for Wizard and general, other minor changes in Wizard.
+	Bug fix; holidays editor valid from/to date now respects the settings.	
+	About page content update.
+	System online management layout improved.
+	Removed watermark background.
+	Web app title changed.
+Version.2.2.1 07-01-2021
+	Minor changes
+Version.2.2.0
+	Possibiliy for uploading kernel patch
+	New web layout
+	Wizard implemented
+Version.2.1.1 17-12-2020
+	Minor bug fix for STID readers
+	bug fix for ttyS1 and ttyS5. Are now on new kernel changed to ttyO1 and ttyO5
+Version.2.1.0
+	Merged Cloud and App version
+	Reader Display mode did reload correctly
+	fixed left spaces and right spaces for card numbers during cvs import 
+	If door property [No Door Relay on exit-push] was active and week program Door perm open, then the Door relay wasn't activated
+	Integrated:
+		Fixed minor issues with Threat level
+		Added special feature for Riget. 
+	Suppress LPR checkout was not working
+	Suppressing Door relay for exit-push did also suppress for Remote open
+	Added ValidFrom/To on accessgroups
+	Integrated:
+		GPIO didn't work correctly. 
+	
+Version.2.0.18 12-08-2020 TechCloud
+	Added system info for Special build	
+Version.2.0.17 06-08-2020
+	Remote browsing ( TechCloud ) ( NOT IN OFFICIAL VERSION )
+	Minor fix for techapi
+Version.2.0.16 09-07-2020
+	Door exit push inputs was set to normaly closed during slave sync
+	Reader Intrusion commands wansn't reload correctly
+	Wired areas Status and State link wasn't loaded correctly
+	remote input selection fixed
+	Low memory handling didn't work.
+Version.2.0.15 08-07-2020
+	Fixed internal script error
+Version.2.0.14 07-07-2020
+	Fixed STid OSDP busy problems.
+	Fixed DHCP fallback address.
+	Multiple remote inputs in a door equation didn't work
+Version.2.0.13 29-06-2020
+	Fixed Conlan Sector reading. 
+	Change of SSH settings did logout web page
+Version.2.0.12 25-06-2020
+	Fixed hardware clock issue
+	Fixed External IO module. Channel settings wasn't saved correctly
+	Default baud rate for OSDP is shanged to 9600
+Version.2.0.11
+	Quick card holder mngt.
+		Card holder info contains creator of the instant access code	
+Version.2.0.10	
+	First keybox implementation
+Version.2.0.9	08-06-2020
+	Delete readers/Door/External IO, wasn't possible
+	Web user properties was linked to TechPoint's
+Version.2.0.4	07-05-2020
+	New kernel release
+	
+Version.1.3.30 23-11-2020
+	Fixed checksums bug in Siedle-Vario Bus
+	Optimized Master/SLave mode.
+	Fixed bug in check card used counter.
+	New Property for Enabling Events for Open door and close door
+	Conventus integration didn't set card holder weekprogram Duration. 
+	Intrusion commands wasn't clear after panel timeout
+	IO Monitor Tamper refresh didn't work
+	Intrusion Action input didn't handle set/unset bit correctly
+	a osdp device could end in a sitiuation where it continues to respond nack. Only possible way to get online again is restarting it.
+	Implemeted Area concept for Start-Intego Offline 
+	Fixed bug in Door editor for offline doors where Lockid wasn't incremented correctly
+Version.1.3.29	28-10-2020
+	OSDP Mifare encoding. 
+		Closecard wasn't send incase of error.
+		
+Version.1.2.28	23-10-2020
+	Support for offline desfire cards 	
+	Fixed init state for equations
+	Integrated:
+		GPIO didn't work correctly. 
+Version.1.3.27 06-10-2020
+	Fixed issue with Vanderbilt Display mode
+Version.1.3.26 15-09-2020
+	Suppressing Door relay for exit-push did also suppress for Remote open
+	Added new swap nibbles feature for CSN
+	Fixed Vanderbilt Secure channel problem. They dont restart the Secure channel when instructed
+
+Version.1.3.25 03-09-2020
+	Reader Display mode did reload correctly
+Version.1.3.24
+	If door property [No Door Relay on exit-push] was active and week program Door perm open, then the Door relay wasn't activated
+	Integrated:
+		Fixed minor issues with Threat level
+		Added special feature for Riget. 
+	Suppress LPR checkout was not working
+	Support for multi door mode. Initial release
+Version.1.3.23 15-07-2020
+	Door input exitpush didn't work
+	Instrusion state for the door wasn't updated when removing the area from the door
+Version.1.3.22 10-07-2020
+	SaltoShip supports now both Card + pincode. Option in Integration settings
+Version.1.3.21 09-07-2020
+	Fixed STid OSDP busy problems.
+	Multiple remote inputs in a door equation didn't work
+	Door exit push inputs was set to normaly closed during slave sync
+	Reader Intrusion commands wasn't reloaded correctly
+	Wired areas Status and State link wasn't loaded correctly
+	remote input selection fixed
+	Conventus Preopen and Preclose didn't work on the slaves
+	
+Version.1.3.20 01-07-2020
+	Fixed hardware clock issue
+	Fixed External IO module. Channel settings wasn't saved correctly
+	Default baud rate for OSDP is changed to 9600
+	Fixed Conlan Sector reading. 
+	Cardless access supports variablelength
+	Intrusion status wasn't updated correctly. Error in DBAsyncAtion
+	Support for STid Readers.
+	Door week program didn't set normal if always pincode was selected as next function
+	Suppress keypad digits didn't work.
+	Integrated:
+		Thor sql download didn't work when download to enterie bus
+Version.1.3.19 07-05-2020
+	Includes fix from 1.2.82
+	Complete:
+		New reload time feature for Max card used.
+Version.1.3.18 12-04-2020
+	Include fix 1.2.76 to 1.2.80
+Version.1.3.16
+	Door perm command from reader did requirer Allowed blocked doors. it should have been used for Block commands
+Version.1.3.15
+	Fixed problem with Exit area settings on the door.
+Version.1.3.14
+	Fixed cardless access problem. 
+Version.1.3.13
+	Added Door hold code to Dooralarm equation
+	Added new card option for allowing Keypad door commands	
+	Added new tab for config of door commands
+	Fixed Issue with intrusion commands and cardless access
+	Added new option of OSDP readers. Can now show time or door status or off
+	IMPORTANT
+		Cardless access settings are moved to global access settings, and the reader settings only specifies if cardless access is anabled
+		Cardless access will default tread it as an string.
+Version.1.3.12
+	Fixed need for swap CSN for SE and VOX readers
+	Minor fix for reloading Debug settings.
+	Minor fixes in License file handling during production
+	Import Smart-Intego wireless online didn't create reader detectors.
+	Implement Smart-Intego AX event Housing tamper event
+	Smart-Intego offline lock. 
+		Battery alarm could be cleared	
+		Sector demands was calculated incorrectly. Expected more sectors than needed
+Version.1.3.11
+	Fixed bug with Siemens Vanderbilt reader. Leds wasn't set correctly.
+	Fixed bug in door editor. If no Areas was defined then it fails to save and the Web process did restart
+Version.1.3.9
+	Fixed bug in reports. 
+	Fixed bug in Elevator control
+	External Input/Output names was updated by mistake when device went online
+	Added new Conventus Feature:
+		Units supports PreOpen/Close choice
+		Resouces are fectedh automaticly.
+	New time on reader settings:
+		Suppressing keypad after card read time. 
+	Integrated:
+		Fixed problem with door alarms on subbus.
+	Added new feature for Integrated.
+		Support for 65000 free cards, and possibility for downling Pincode from TGM Database
+	Added Property to Toggle door with pin, for option toggle close without pincode
+	Minor fixes for Automatick Firmware download
+	Added new feature for Integrated.
+		Support for 65000 free cards. (WILL ONLY WORK FOR INSTALLATION WHERE PINCODE UPLOAD IS NOT USED)
+	Fixed installation mode checkbox. If card did exist in thor database but didn't have right then card holder was denied acccess. It will now grant all access regardless of database
+	Fixed G4 card format. Did only support 6 digits. Supports now 10 digits
+	Fixed DNS Issue in network settings.
+	Fixed TechTool issue where invalid IP addr lead into malfunction
+	Fixed Search issue for SaltoShip access rights
+	SaltoShip view access rights
+	Minor Siedle changes
+	Fixed Aperio bug with card toggle
+	Fixed bug in equation. AND NOT inside a parenties resulted in server malfunction
+	Fixed Siedle ELM problem, where new version of hardware didn't work properly
+Version.1.3.7
+	Added Salto-Ship Access rights viewer
+	Added card option for overruling intrusion set failures.
+	Fixed bug with Intrusion commands. didn't make a right string compare
+Version.1.3.6
+	Added new feature for Norwegian market. Supressing all access events if the access is without pincode
+	Intrusion menus was not visible if intrusion was disabled.
+	Upgrading from 1.2.57 did cause problems.
+Version.1.3.5
+	Forced set didn't work.
+	minor link table cleanup was missing
+	added Intrusion options for cardreader.
+	
+Version.1.3.4
+	Entry/Exit areas wasn't loaded correctly when creating a new door
+	Alarm outputs didn't reload correctly
+	Alarm output duration wasn't treaded correctly
+	Equations did not allowed Intrusion objects.
+	Added hover for IO monitor, where real status is showed
+	Added hover for system realtime monitor Intrusion view )
+	Added support for multiple accessgroup while importing from csv
+Version.1.3.3
+	Minor fixes.
+Version.1.3.2
+	Beta release for Intrusion,
+Version.1.3.1
+	Integrated bug fix.
+		-- Uploading pincodes from a TechPoint did not work properly especially if running free format
+	Added Token possibilities for IP Connector
+	Remove left zero from conventus keys
+	Added OSDP delay between each command.
+	Fixed bug with intrusion rights which wasn't respected if they came from conventus
+	Fixed bug where no intrusion rights and intrusion was set, did ask for pincode.
+	fixed bug with sending thor detector mails to a different subbus
+	Added feature for clearing external detector events and clear from TGM
+	Fixed Timer bug, for IO Objects. wrong timer was deleted.
+	Support for external IDs; keeping track of record IDs assigned by other system, support for select based on external IDs.
+	Whitelist cards was sent to second lock for SimonsVoss, which are incorrect. The Cylender only supports one whitelist
+	TechPoint API v0.7:
+	- Bug fix; PUT methods for access card holders, access cards and access groups were expecting all fields and update unspecified fields (now only id field is required)
+	- External ID support for access card holders, access cards and access groups
+	Whitelist cards.
+		- Bux fix: Restarting Whitelist was not possible.
+	Adding support for Firefighter cards. ( Unlimited access )
+	Added support for Latin translate for OSDP displays
+	Added support for QUIAccess reader. ( OSDP QR and barcode reader )
+	Added new Card format UTF8. Primary for Barcode readers
+	Fix bug with TechPoints and TechPoint finder, where it sometimes caused a Web crach.
+	Integrated
+		- bug fix: Holiday was showing incorrect year.
+		- bug fix: GPIO settings did add more segments to tab.
+	Added IP Host name lookup.
+	Added Retry counter for timeserver connection faults.
+	Added support for SmartIntego Online import (CSV)
+	Added support for TLS/SSL
+	Door property Disable buzzer did overwrite Reader property Buzzer on card accepted.
+	Added door property for EL402 door contact.
+	Added feature for automatic firmware upgrade
+	Fixed Pincode misused timeout.
+	Added feature for blocking card, if pincode was misused
+	Added Salto Space integration ( SHIP )
+	Added Intrusion rights property to Conventus units. 
+Version.1.2.85 25-06-2020
+	Fixed hardware clock issue
+	Fixed External IO module. Channel settings wasn't saved correctly
+	Default baud rate for OSDP is shanged to 9600
+Version.1.2.84 29-05-2020
+	Integrated:
+		Thor sql download didn't work when download to enterie bus
+	Supress keypad digits didn't work.	
+Version.1.2.83 14-05-2020
+	Door week program didn't set normal if always pincode was selected as next function
+	License editor crach in master/Slave mode
+	Database backup is now compressed, because web doesn't support files larger than 16 mByte
+Version.1.2.82 06-05-2020
+	Smart-Intego fix.
+		Huge networks could close doors even they should be perm open
+	Threat Level support. and 2 extra specials days are added to the complete version
+
+Version.1.2.80 15-04-2020
+	Smart-Intego Offline fix:
+		Offlice mode is now default on
+		Extended door timing (disabled person) is now implemented
+		Some of the settings parameters are moved to advance tab
+		PHI is now converted to human readable format
+Version.1.2.79 14-04-2020
+	Slave license was not loaded correctly on the master.
+	License view did fail to view license info if TechPoint name contains & and some other charateres
+	added support for importing max used for card.
+	Prepared for new kernel upgrade
+	fixed issue with where clause and bindings.
+Version.1.2.78 10-03-2020
+	Implemented retransmit for Smart-Intego long term release and cancel
+Version.1.2.77
+	Increase offline encoding speed
+Version.1.2.76
+	Fixed issue with Siedle-Prox format. (swap was needed if SE prox reader osdp)
+Version.1.2.75 24-02-2020
+	Fixed Balance input problem where Normally open/close wasn't reloaded correctly
+	Optimized Master/Slave 
+	Fixed Master/Slave issues with finding new techpoints.
+Version.1.2.74  14-2-2020
+	Integrated:
+		Fixed Clock issue if readers was acting as master on topbus
+Version.1.2.73  13-2-2020
+	Added new reader property for Buzzing on card read
+	added new reader property for buzzing on interdigit timeout
+Version.1.2.72 	7-2-2020
+	Fixed need for swap CSN for SE and VOX readers
+	Minor fix for reloading Debug settings.
+	Minor fixes in License file handling during production
+	Import Smart-Intego wireless online didn't create reader detectors.
+	Implement Smart-Intego AX event Housing tamper event
+	Smart-Intego offline lock. 
+		Battery alarm could be cleared	
+		Sector demands was calculated incorrectly. Expected more sectors than needed
+Version.1.2.71
+	Added TechVisitor Event types LPR Checkin and out and Pending timeout
+	Reader inputs wasn't created when importing from smart-intego csv file.
+	Corrected minor stuff for TechVisitor LPR Mode	
+	New access option. Access events are only logged if pincode are used together with card. ( Norwigan market )
+Version.1.2.70
+	Integrated:
+		External alarm could be cleared even the input still was active
+		TechPoint Time wasnt updated on sub busses. Requires new TechNode version >= 2.1.36
+		
+	ODBC Settings are correctly restored fater Database restore. ( TechVisitor settings etc)
+	Password for changing IP addr from TechTool wasn't restored correctly after database restore
+	Automatic firmware download will now create a file on the FTPS server <ipaddress.info>. Requires write access on the FTPS server
+		
+Version.1.2.69
+	Fixed bug with HID reader. 
+	Changed CSV import. 
+		Supports again multiple CARDS columns.
+		Support either Comma or semicolon separated.
+Version.1.2.68
+	Fixed bug in reports. 
+	Fixed bug in Elevator control
+Version.1.2.67
+	External Input/Output names was updated by mistake when device went online
+	Added new Conventus Feature:
+		Units supports PreOpen/Close choice
+		Resouces are fectedh automaticly.
+	New time on reader settings:
+		Suppressing keypad after card read time. 
+	Integrated:
+		Fixed problem with door alarms on subbus.
+Version.1.2.66
+	Added new feature for Integrated.
+		Support for 65000 free cards, and possibility for downling Pincode from TGM Database
+Version.1.2.65
+	Added Property to Toggle door with pin, for option toggle close without pincode
+Version.1.2.64
+	Minor fixes for Automatick Firmware download
+	Added new feature for Integrated.
+		Support for 65000 free cards. (WILL ONLY WORK FOR INSTALLATION WHERE PINCODE UPLOAD IS NOT USED)
+Version.1.2.63
+	Fixed installation mode checkbox. If card did exist in thor database but didn't have right then card holder was denied acccess. It will now grant all access regardless of database
+	Fixed G4 card format. Did only support 6 digits. Supports now 10 digits
+Version.1.2.62
+	Fixed DNS Issue in network settings.
+	Fixed TechTool issue where invalid IP addr lead into malfunction
+	Fixed Search issue for SaltoShip access rights
+Version.1.2.61
+	SaltoShip view access rights
+Version.1.2.60
+	Minor Siedle changes
+Version.1.2.59
+	Fixed Aperio bug with card toggle
+Version.1.2.58
+	Fixed bug in equation. AND NOT inside a parenties resulted in server malfunction
+	Fixed Siedle ELM problem, where new version of hardware didn't work properly
+Version.1.2.57
+	Minor changes to CSV import.
+Version.1.2.56
+	SaltoShip:
+		ROMCode wasn't converted correctly. 
+	Selecting access right to a door is made more elegant
+Version.1.2.55
+	Pressing the keypad, didn't suppress Door warning and hold.
+	Added support for Multiple access groups select and indiviualy door rights for a card holder.
+	Fixed issue with SE readers retransmit
+	Fixed Interdigit timeout, which didn't work for cardless access
+	Fixed Default weekprogram selection for access editor and access group,
+	Timeserver application (sntp) wasn't installed correctly
+Version.1.2.54
+	Integrated:
+		Added possibility for chaning Thorguard network level. 
+	Added support for CSV card rights import.
+	Added new card format Nokas Desfire.
+Version.1.2.53
+	Salto-Ship Integration
+		If the Techpoint couldn't connect to the salto-ship interface, then the Web process did restart.
+Version.1.2.52
+	Integrated.
+		Aims doesn't download extended personal groups which lead into an exception because SEARCHVALUE was'nt	assigned
+Version.1.2.51
+	Integrated
+		TechPoint Event Panel timeout was logged in tgm as Card not created.
+Version.1.2.50
+	Integrated:
+		Change G4S format so it's in human readable format in TGM Client
+		Increase ThorIPCSession timeout and number of retransmit to compensate for unstable IP networks.
+	Door weekprogram Perm After card can now be closed with etiher Toggle card or officemode card	
+	Fixed issue:
+		Door perm open and cards with pincode did always ask for pincode. Now it will not ask for pincode if the door is perm open
+Version.1.2.49
+	Added Cardholder weekprogram type Officemode. Dubble card will toggle door open/close
+Version.1.2.48
+	Added Inter-Digit timeout. Reader/Settings. Max time between each digit while entering Pincode.
+Version.1.2.47
+	Fixed Smart-Intego VCN bugs .
+	Fixed TechVisitor LPR bugs
+Version.1.2.46
+	Fixed Access group bug when making new copy.
+Version.1.2.45
+	Fixed bug with Offline history. Did use cardholderid instead of cardno id.
+	Fixed bug in Sync manager. 
+Version.1.2.44
+	Fixed Smart-Intego Offline bug. More than 16 lock was rejected.
+Version.1.2.43
+	Added checkbox for enabling Manual Lan speed negotiation.
+	Fixed minor Siedle bugs.
+	Integrated:
+		Fixed bug where Zone counting did slowdown card download
+		Fixed bug where reaction time on card readers was not working while downloading cards.
+
+Version.1.2.42
+	Fixed IPC Session lost for Thor integrated version.
+	
+Version.1.2.41
+	Changed SaltoShip House Keeping and added additional save for debug purpose.
+Version.1.2.40
+	Added Siedle VarioBus readers.
+	Added HIK-Vision Wiegand 72 Bit LPR card driver
+
+Version.1.2.39
+	Added Siedle Prox Format
+Version.1.2.38
+	Added support for Pronestor Visitor integration
+	Some Sidle Name changes
+	Add random extension to hostname
+Version.1.2.37
+	Added new OSDP Reader device PCS Palm-Vein
+	fixed bug in ThorAnti passback manager.
+
+Version.1.2.36
+	SaltoSHIP Bug:
+		Processing Salto Doors could by mistake delete accesslevel relations
+	Added SaltoSHIP Monitor	
+	Added new Door Porperty for Gates, where Pressing/Present card will retrigger the door relay
+Version.1.2.35
+	Fixed SaltoShipå problem with optimized transaction
+Version.1.2.34
+	Fixed some SaltoShip Issues with Packet timeout and Reconnect
+
+Version.1.2.33
+	Added additional handling for SaltoShip Protocol. Resend packet if timeout during receive
+Version.1.2.32
+	Added additional Thread name to coredump
+
+Version.1.2.31
+	Added Intrusion rights to SaltoShip 
+	
+Version.1.2.30
+	Added Holdup code and Holdup pincode added to complete version
+	Added cardoption for Disabled Persons.
+	Converted UTC-X to UTC+X. Linux treaded Finland as UTC-3.
+	Integrated:
+		Fix bug in Card format 14
+
+Version.1.2.29
+	Optimize SaltoShip data processing
+	Fixed bug in TimeTables.
+	Fixed bug in door tables.
+	Integrated:
+		Fixed bug in antipass back manager
+		Added Softoutput for zone counting.
+Version.1.2.28
+	Fixed bug in stalto integration.
+Version.1.2.27
+	Optimized Salto integration. still misses to optimize ShipInteface
+
+Version.1.2.26
+	Added Salto-Space Integration ( SHIP )
+
+Version.1.2.25
+	Bug Fix:
+		Deleting External_IODevice didn't delete linked objects. IO Monitor did crash.
+
+Version.1.2.24
+	Added support for QUIAccess reader. ( OSDP QR and barcode reader )
+	Added new Card format UTF8. Primary for Barcode readers
+	Added IP Host name lookup.
+	Added Retry counter for timeserver connection faults.
+	Added support for SmartIntego Online import (CSV)
+	Added support for TLS/SSL
+	Door property Disable buzzer did overwrite Reader property Buzzer on card accepted.
+	Added door property for EL402 door contact.
+	Added feature for automatic firmware upgrade
+	Fixed Pincode misused timeout.
+	Added feature for blocking card, if pincode was misused
+	
+Version.1.2.23		11-1-2019
+	Added new reader triggers:
+		Access granted/Denied.
+		
+Version.1.2.22		10-1-2019
+	Integrated bugs:
+		External input 90-97 as not updated correctly
+		External Device address was not validated correctly. (invalid input)
+		
+Version.1.2.21		8-1-2019
+	Deleting events didn't handle syncronized events correctly.
+
+Version.1.2.20		17-12-2018
+	Added Token possibilities for IP Connector
+	Integrated but fix.
+		-- Uploading pincodes from a TechPoint did not work properly especially if running free format
+
+Version.1.2.19		14-12-2018
+	Whitelist cards.
+		- Bux fix: Restarting Whitelist was not possible.
+	Adding support for Firefighter cards. ( Unlimited access )
+	Added support for Latin translate for OSDP displays
+	Fix bug with TechPoints and TechPoint finder, where it sometimes caused a Web crach.
+	Hisec
+		- bug fix: Holiday was showing incorrect year.
+		- bug fix: GPIO settings did add more segments to tab.
+		
+
+Version.1.2.18		23-11-2018
+	Remove left zeros from conventus key.
+	Whitelist cards was sent to second lock for SimonsVoss, which are incorrect. The Cylender only supports one whitelist
+	TechPoint API v0.7:
+	- Bug fix; PUT methods for access card holders, access cards and access groups were expecting all fields and update unspecified fields (now only id field is required)
+	- External ID support for access card holders, access cards and access groups
+
+Version.1.2.17		22-11-2018
+	Added OSDP delay between each command.
+	Fixed bug with intrusion rights which wasn't respected if they came from conventus
+	Fixed bug where no intrusion rights and intrusion was set, did ask for pincode.
+	fixed bug with sending thor detector mails to a different subbus
+	Added feature for clearing external detector events and clear from TGM
+	Fixed Timer bug, for IO Objects. wrong timer was deleted.
+	Support for external IDs; keeping track of record IDs assigned by other system, support for select based on external IDs.
+	
+	
+Version.1.2.16		24-10-2018
+	Added SQL Interface for SALTO-SPACE
+	Fixed minor issues with Smart-Intego VCN
+	
+Version.1.2.15 		02-10-2018
+	Added WebApi library (basic command processing and events and web hook) and basic configuration, disabled by default in license file. 
+	Changed ntp to sntp. Better preformance.
+	disable ping reply fixed.
+	
+Version.1.2.14
+	Fixed bug in SmartIntego driver, where Receiver stream buffer could be large than max size. Result was unable to connect to gateway.
+	Fixed bug in External IP receiver, where mulitple instance did use same listen port. Lead into server crach
+	Fixed bug in smartintego driver, where whitelist driver potentially could stop and didn't start during recreate whitelist.
+	Adding addtional Restart causes.
+	Encoding offline cards was executed after pincode, but is quite diffecult to do. So card is now encoded before requiring pincode
+	Complete Bug.
+		Changing pincode from keypad didn't save correctly after delayed saved
+		
+Version.1.2.13
+	Fixed NTP security issue Vulnerability Note VU#348126
+		ntp service
+	New Thor feature. 
+		SystemSettings->Integration->Thor settings have a checkbox for enabling Global APB mode. 
+		Added fixed Reader version 3.9.4
+		Possiblity for adjusting thor clock from TechPoint if NTP Server is active. SystemSettings->Integration->Thor settings
+		TechPoint Clock is not adjusted if NTP server is active.
+	Common Bug:
+		Eventlog didn't clear events correctly.
+	Thor Bugs:
+		Download APB where Two Thor readers was controlling same door did lead into wrong APB settings.
+		
+Version.1.2.12
+	Fixed Visitor Integration where both IDCompany and TechVisitor License was need for Reader visitor menus
+	Fixed that visitor integration did pass intrusion request to wrong impl.
+	Added feature for linking two Hisec readers to same door, for assigning different rights on both side of the door
+	
+Version.1.2.11
+	Fixed problem with reevaluation of equations
+	Fixed that door weekprogram changes made from Door weekprogram editor didnt change the doors week program
+	Fixed elevator matric bug for Multimaster mode
+	New features:
+		Card holder week program type Perm until close. Doors is set perm released until door is closed again or period expires
+		Maximum use for at card. A counter in the Card editor can specifies how many times the card can be used before it's denied.
+		Suppress buzzer. did not disable if active
+		
+Version.1.2.8
+	Aperio Offline integration
+	SmartIntego VCN integration
+	Fixed Visitor Toggle function where both Leds could be switch on, because the door time wasn't expired.
+	Led on readers wasn't sometimes set currectly during startup
+	Delay and Duration on Inputs did work correctly.
+	Added support for TCP/UDP inputs.
+	
+Version.1.2.7
+	Added "Delete all.." button for card holders. Delete is done in batches of 100 (transaction). Double warning is issued if more than 50 card holders/cards are to be deleted.
+	Support for SmartIntego door monitor
+	
+	
+Version.1.2.6
+	Added Test support for NTP Servers.
+	Added events for NTP Errors/loss
+	Fixed bug in whitelistcards. Whitelist card was deleted whenever the gateway reconnects
+	Fixed TwoMan rule. Using MPO instead of Trace
+	Fixed Thor Door 1 and 2 control
+	
+	.
+Version.1.2.5
+	Added Elevators/Floors configuration, Elevator tab on Door editor.	
+	Added access rights managment for selected doors so that linked floors (based on door assigned elevator) can be selected (if any).
+	Added approver for two-man rule handing. Thor reader settings can select how trace bit will be interpreted
+	
+Version.1.2.4
+	Fixed GPIO that was delete if export config from tgm.
+	Added openssl configuration file and file containing all CA certificates (ca-certificates.pem).
+	Changed Conventus library so it now verifies https certificate. Conventus TLS connection is now verified.
+	
+Version.1.2.2
+	Added support for input trigger options. Affected web editors: output editor on link to input tab, equation editors where input can be selected.
+
+Version.1.2.1	// Field Test
+	Added Sabotage handling
+	Added GPIO-WDC interface
+	Added Minitel 
+
+Version.1.1.100
+	Added OSDP delay between each command.
+	Fixed bug with intrusion rights which wasn't respected if they came from conventus
+	Fixed bug where no intrusion rights and intrusion was set, did ask for pincode.
+	fixed bug with sending thor detector mails to a different subbus
+	Added feature for clearing external detector events and clear from TGM
+
+Version.1.1.99
+	Adding addtional Restart causes
+	Fixed bug in SmartIntego driver, where Receiver stream buffer could be large than max size. Result was unable to connect to gateway.
+	Fixed bug in smartintego driver, where whitelist driver potentially could stop and didn't start during recreate whitelist.
+	
+
+Version.1.1.98
+	Thor Bugs:
+		Download APB where Two Thor readers was controlling same door did lead into wrong APB settings.
+	Fix bug:
+		Eventlog didn't clear events correctly.
+Version.1.1.96
+	Fixed bug in whitelistcards. Whitelist card was deleted whenever the gateway reconnects
+	Fixed Problem with Wireless disturbance from SmartIntego handles
+	Added openssl configuration file and file containing all CA certificates (ca-certificates.pem).
+	Changed Conventus library so it now verifies https certificate. Conventus TLS connection is now verified.
+	Added sorting for First and Lastname in access card holder list
+	Fixed bug.
+		Suppress buzzer. did not disable if active
+		Time couldn't be adjusted from home page
+	
+	
+Version.1.1.95
+	Added Hisec card format 4.
+	Hisec card format 14 do also supports card format 4
+	
+Version.1.1.94
+	Added openssl configuration file and file containing all CA certificates (ca-certificates.pem).
+	Changed Conventus library so it now verifies https certificate. Conventus TLS connection is now verified.
+
+Version.1.1.93
+	Added internal feature for local debug.
+	Door perm open didn't activate relay during startup.
+	Closing the door from TGM didn't close if wp perm
+Version.1.1.92
+	Thor set door normal didn't close if where was a weekprogram perm open
+	
+Version.1.1.91
+	Nabto: tunnel support and new nabto library build.
+
+Version.1.1.90
+	Adding support for clearing conventus inbox before issuing expose (full data request)
+	Adding support for fetching conventus inbox data in chunks
+
+Version.1.1.89
+	Added new option/claim on Web user editor "Keep session alive" which can disable auto log out.
+Version.1.1.88
+	Changing OSDP device settings, while more than one device is online, will result in a device alarm
+	Smart-Intego. Implemented manuel keep alive mail if spontan keepalive is lost.
+	Smart-Intego. If intrusion was set then, no access deny was sent to the lock, and therefore will open if the card was part of the whitelist .
+	
+Version.1.1.87
+	Fixed Conlan Sector reading fault, if firmware version was lower than 1.1.2
+	Fixed repeated event handling, which was disabled,
+	
+Version.1.1.86
+	Removing accessors that are not part of full data sync. ( Conventus )
+	
+
+Version.1.1.85
+	----------------------------------------------------------------------------------------------------------------------------------
+	IMPORTANT NOTE. Upgrade to this or later version will take more time than usualy. DO NOT RESTART THE CONTROLLER BEFORE IT FINALIZE
+	----------------------------------------------------------------------------------------------------------------------------------
+	
+	Added index for Event_log, to reduce clear alarm time.
+	Added reboot restore events.
+	move SQLite tmp dir from volatitle to flash disk
+	TechPoint changes did not sanitize correct.
+	Option Pincode newer expires didn't work correctly. Result was no reation on the reader.
+	
+Version.1.1.84
+	Fixed Smartintego problem with Battery and Wireless alarms.
+	Fixed Whitelist while no whitelist card, 
+
+	
+Version.1.1.83
+	Changed Conventus API calls so they include exposeToken information and treat events as a sequence where the latest entry "wins"
+	Change Conventus inbox processing based if it was regular inbox drain or complete drain (with exposeToken) with support for waiting for index to be filled
+
+Version.1.1.82
+	Reusing conventus accesors resources
+	Integrated: Card with both doors didn't open both doors.
+
+Version.1.1.81
+	Fixed conventus resource issue with very long card swipe respones
+
+Version.1.1.80
+	Card holder weekprograms did not change after holday period expires. Workaround ( Delete or change a holiday entry )
+	Integrated did send APB mark incorrectly
+	Smartintego Device did restart if some property was changed.
+	Eventlog cache manager didn't refresh correctly
+
+Version.1.1.79
+	Added support for Thor WDC/GPIIO device. ( Requires TechNode version 2.3.1.29 )
+	Added support for Thor Minitel.		 ( Requires TechNode version 2.3.1.29 )
+	Fixed minor bug with Whitelist list cards.
+
+Version.1.1.78
+	Card holder weekprograms didn't repect holidays.
+	
+Version.1.1.77
+	Integrated did log access on a blocked door as card not created.
+	Remove Avahi (mDns responder )
+	Change Twoman rule.
+	Add Air function to Integrated version.
+	Fixed card editor with multiple cards that couldn't be deleted
+	Updated ntp client. DRDos attach
+	Fixed Thor add/remove device, where reboot was needed for correct devicetable.
+	Fixed delete thor device which didn't work.
+
+Version.1.1.76
+	Added Save and close to all forms.
+	Added Delayed events
+	Fixed bug in smart-intego with logging Wireless alarms.
+	Added automatic restart after sync failures.
+	Added Report execute.
+	Added Whitelist support for SimonsVoss locks.
+
+Version.1.1.75
+	Output settings Normal On/off wasn't reevaluated correctly
+	OSDP inputs in equations was not reevaluated correctly
+	If door was forced then the door relays wasn't activated while releasing the door. and door forced state wasn't removed after releasing the door.
+	Fixed AIMS Bridge collected mails
+	Added Watchdog mails for Smartintego.
+
+Version.1.1.74
+	if weekprogram perm was active while restarting the TechPoint and the door also was open, lead into wrong door state indication
+	Fixed minor issues with External Techpoint connection, where there during startup dropped the connection several reconnections
+
+Version.1.1.73
+	Fixed bug with TechPoint connections, where remote Connected didn't process the pending TX queue correctly. 
+	Added process wide transaction queing.
+	New Report dialog for executing the defined reports.
+	Improved backup features.
+	
+Version.1.1.72
+	Change Master now possible.
+	Convents access rights with more than 1000 members was very slow.
+	HTTP/HTTPS settings are not destroyed while updating the firmware
+	Additional Access reports added.
+	
+Version.1.1.71
+	Added Nabto support.
+	Added SimonsVoss events for Battery/Wireless problems.	
+	First Report are now avaliable.
+	Access denied did log card holder if found
+	Fixed led problems with Desiter OSDP reader
+	Added additinal Thor Reader events.
+	Added Hisec Card format 13 and Card credentials.
+
+Version.1.1.70
+	Internal Features
+
+Version.1.1.69
+	Fixed problem with Enabling Conventus integrations accross Multi TechPoints
+	Fixed issue Intrusion set without pincode
+	
+Version.1.1.67	
+	Added Door_Normal to door status
+	Fixed bug in TechPoint Finder
+	Fixed bug with New copy in Card rights
+	Fixed Multi-TechPoint combobox which didn't refresh after adding a new techpoint
+	Fixed Door equation bug, when Custom IO was selected.
+	Fixed Card holder search.
+	Add support for Integrated mode and simple intrusion. ( Not TGCU )
+	Fixed bug with Conventus enable connection. It didn't reload correctly
+	Fixed bug with Wiegand where perm open wasn't correctly showed
+	Added handling for LAN link lost. We now try to switch off auto neg and turn it on again.
+
+Version.1.1.66
+	Thor Door status wasn't sent correctly while running TechPoint GPI-PC
+	
+Version.1.1.65
+	Fixed new copy inside access cards, while running Door/week and Week/door
+	Fixed Conventus error related to accessors missing cardno and pincode
+	Fixed Intrusion integration
+
+Version.1.1.64
+	Door WP Toggle wasn't reset during intrusion set. result was door perm again after unset
+	Implemented G4S card format.
+	
+Version.1.1.63
+	Added event for SimonsVoss System Inconsistency problem
+	
+Version.1.1.62
+	POE power consumption is added to IO Monitor
+	Fixed minor issues with Door monitor
+	
+Version.1.1.61
+	Management Door Perm open wasn't reset if intrusion set. Result was Door perm again after unset.
+	Management Door Perm open wasn't reset if card toggle close.
+	Added column for Card information and access group.
+	Door WP Perm wasn't activated after intrusion unset.
+	Deleting card holder did fail.
+	Access cardholder without a card leads into exception and web restart
+	
+Version.1.1.60
+	Remove reading error 'Unsupported operation' for SmartIntego reader
+	Card reused control didn't work.
+	Multi TechPoint remote Inputs didn't load correctly
+	Corrected Exception while uploading Translation file
+	Added APB Relaxed Exit zone control. 	
+	
+Version.1.1.59
+	Fixed bug with card reused control
+	Fixed bug with Door Management where Set and Unset wasn't disabled correctly.
+	Added events for APB.
+
+Version.1.1.58
+	Added Intrusion Set/unset control from door management
+	Fixed Multitechpoint issues
+	Added Softtypes Intrusion Set and Unset for Intrusion control
+	Fixed reader info missing for various Card format errors.
+
+Version.1.1.55
+	Added possiblity to send thoralarm when an input is activated
+	Multi TechPoint Release.	
+
+Version.1.1.54	
+	Added support for PHG VOXIO osdp readers readers.
+	Fixed Unitek reading problem.
+	Added new conventus support
+		
+Version.1.1.52	23-06-2017
+	Fixed problem with fast card reading, which could lead into restart of the reader driver
+
+Version.1.1.51	12-06-2017
+	Fixed Unset indication if user didn't have permission for the area.
+	new card swipe will restart reader interaction
+		
+Version.1.1.50
+	Fixed Pincode problem with Unitek reader
+	Card door toggle is now removed if card set's his area.
+	Fixed property value for thor exit reader address.
+	Fixed problem where Door Open while restart did not behave correctly
+	
+Version.1.1.49
+	Fixed MMP bus tamper. Did not use the correct detector address.
+	Fixed card format 14. swapping nibbles.
+	Fixed Unitek Set/Unset indication
+	Remove property delay if follow input was selected.	
+	Added checkbox for Master/Service cards without pin
+	Added Door Property 'No Door relay if exit-push'. Used for Assa-Abloy handles
+	Added Reader property 'No exit-push Indication'. Suppressing reader indication of door released. Used for Assa-Abloy
+	Fixed bug where Door relay was activated, even the door already was open.
+
+Version.1.1.48 
+	Fixed issue with Simons-Voss gateway, reconnect issue.
+	Fixed Installation mode in integrated mode, that didn't work if cardformat was freeformat.	
+
+Version.1.1.47
+	Fixed connection issue with Simons Voss Gateway version 40.3
+	Added Output WP Functions for Thor Integration	
+
+Version.1.1.46
+	Adjusted card flicker timer. didn't repect sector reading
+	
+Version.1.1.45
+	Added simple intrusion to complete version.
+	Added checkbox for allow intrusion actions without pincode
+	Added checkbox for allowing auto unset
+	Added time settings for showing Intrusion set.	
+
+Version.1.1.44
+	Fixed HID keypad digits. Newer version sends other values.
+	
+Version.1.1.43
+	Added Device name to RS485 monitor view
+	Fixed that get door status and spontan door status was not routed correctly when techpoint was mapped in as reader on a subbus
+
+Version.1.1.42
+	Fixed that tamper status wasn't update
+	added support for external OSDP IO module.
+	Fixed bug where installation mode and chipid did cause exception in thor integration	
+	Added support for resettings WEB root password	
+
+Version.1.1.41
+	Reader settings Have Keypad, is now set automaticly if any keypress is received from the readers
+
+Version.1.1.40
+	Fixed Baudrate change for OSDP readers.
+	
+Version.1.1.39
+	Changed DoorFoced behaviour when disable door forced is enabled.
+	
+Version.1.1.38
+	Merged TechVisitor and IDCompany integration.
+	Added Card flicker time. 
+
+Version.1.1.37
+	Added Company name to access cardholder in Complete version
+	Fixed danish letters in card holder form.
+
+Version.1.1.36
+	Added Locker functionality. Card holder can Block the door and then only this card holder can unblock the door again
+	Fixed SmartIntego bug. Card toggle did not work correctly.
+
+Version.1.1.35
+	Added possibility for swapping CSN. 
+	Fixed HID problem with changing Baud rate and device addr. 
+
+Version.1.1.34
+	Card verfied did not trigger when toggling door close
+	Input/Output timing corrected. ( Delay/Duration/Follow)	
+	
+Version.1.1.33
+	Card toggle with period 24/7/365, did not work correctly.
+	Corrected bug where card with correct sitecode but not created, started pincode indication but denied access.
+	Added Intrusion features to complete version.
+	Corrected some detector names.
+	Door Release did not close when door was set normal.
+	Corrected that OSDP detectors wasn't updated if the reader name was changed
+	Complete did not log the card as no access if card exists but no access to the door.
+	Added events for Thor IPC sessions
+	Fixed bug with Card togle time.
+	Send Sector keys to conlan reader incase of sector verification failure. (Seems to loose the keys)
+	Thread usage was not possible in release mode.
+
+Version.1.1.32
+	Fixed Delay/Duration for global equations
+	Added Pincode protection for Thor_database. System->SystemSettings->Integration->Settings->ThorSettings
+	Fixed bug where door held/warning wasn't indicated correctly after perm open/cardtoggle
+		
+Version.1.1.31
+	Added free cardformat with nibble toggle. Card format 34
+	Fixed that conventus online booking did not process already received bookings,
+	
+Version.1.1.30
+	Conventus booking request did not cleanup curl request
+	Convetnus booking should not use CompanyID
+	
+Version.1.1.29
+	Conventus Force request booking did use wrong url.
+	
+Version.1.1.28
+	Updated IDCompany integration with new table layout.
+	Freeformat number was not set to null if freeformat wasn't enabled.	
+	Conventus integration, did not handle booking without card and pin correctly. Door was not open perm.	
+
+Version.1.1.27
+	Fixed bug with GPI-PC socket. 
+	Save Reboot cause.
+	Added new Cidron OSDP vendor ID
+	Fixed Access card and valid infinity checkbox
+	Fixed that Pincode couldn't be deleted.
+	Added access events Card Not yet valid and Card expired.
+	Change card toggle behaviour.
+	
+Version.1.1.26
+	Added TechVisitor Support.
+
+Version.1.1.25
+	Added 'Current limiter' input
+	Added Buzzer output.
+	Fixed bug in conventus address booking.		
+
+Version.1.1.24
+	Implemented software trigger Card Verified 
+	Implemented software trigger Card not found
+	Implemented software trigger Card Illigal
+	Implemented software trigger Card Blocked
+	Implemented software trigger Card Out Of time
+	Implemented software trigger Card used on blocked door
+	Changed Card toogle weekprogram. It did previous toggle off again during night shift.
+		Now it sum all days and if all days including special days are toggle, then the door will be toggled perm forever.
+		
+Version.1.1.23
+	Thor Free format and toggle intrusion did cause an exception
+	Moved Same card detection to Deister Driver.
+	Added events for LAN link lost and address changes
+	Added feature for disabling of Optical Tamper.
+	Change/fixed OSDP chane device settings.
+	Added Sitecode to HISEC Sector credential, which can be used in complete version.
+
+Version1.1.22
+	Handling of OSDP output did lead into alarm Device offline.
+
+Version.1.1.21
+	Minor Correction for HID UHF-Reader
+	
+Version.1.1.20
+	Fixed problem with Door held.
+	Added missing Thorvent Set/Unset
+	Added Techpoint event for settings and unsettings areas
+	Fixed bug where readers moved from one channel to another did work
+	
+Version.1.1.19 
+	Door perm after card wp, was reactivated after unset.
+	Implemented HID-UHF Reader. Use card format 32
+	Added property for Keeping relay active while door is released. 
+	Fixed General purpose week program. Was not evaluated when created.
+	OSDP Input/output names are now set as reader name
+	Fixed Backup/Restore. Did not finialize do to wrong temporary directory.
+	Door close will close the even that the door are using Door perm after card.
+	Door Perm open and pressing exit push did lead into door forced
+	
+Version.1.1.18
+	Added Desfire card credentials handling for Aperio.
+	Added new property for selecting Hardversion for aperio.
+	Aperio Version 3 react on Exit push, if version 3
+	Added Property for aperio to enable logging of Radio link down from the reader.
+
+Version.1.1.17
+	Fixed Check in/out status for IDC Company integration
+	Added General Purpose Week programs.
+	Fixed Holiday handling. 
+	Changed Lastchange date for IDCompnay integration, so it uses SQL function GETDATE()
+	Added 'Allow change Pincode' to reader settings
+	Fixed Pincode Changed from Keypad.
+	Remove Credentials check box from IDC visitor settings.	
+
+Version.1.1.16
+	Thor free format did cause an exception, if value was greather than 0xffffffff
+	Door perm open an a aperio lock did not work
+	Door WP Perm open didn't work with Aperio
+	Added feature for Change password on first login.
+	
+Version.1.1.15
+	Added monitor form for Smart Intego.
+	Fixed bug with Property OSDP secure channel.
+	Fixed Hardware watchdog issue. Watchdog is disabled if target is restarted more than 10 time, 
+	within less than a hour. But the watchdog isn't enabled again before restart.
+	Added Date/Time format choice in Time Settings.
+
+Version.1.1.14 23.9.2016
+	Fixed bug with Door management menu
+	Eventlogdetails can now be scrolled
+	Release Smart Intego lock 
+	Release Conventus Bookings
+	Release ID Company Integration
+	Release OSDP bus inputs and outputs.
+	Fixed bug where integrated version and intrusion rights for a card holder wasn't respected
+	Added Cardless access with 4/5/6 digits
+	Added Pincode length 5 digits	
+		
+Version1.0.34 20.5.2016
+	Fixed bug with Card toggle. did not update door status in tgm correctly
+
+Version.1.0.30 1.5.2016
+	Fix bug where assigning IP address from TechTool did program all techpoints.
+	Requires new TechTool Version greather than 3.0.0
+
+Version.1.0.29 23.3.2016
+	Added Translation
+	Added IDCompany integration
+	Improvments and bug fixes.
+
+Version.1.0.28 3-3-2016
+	Firmware upload requires patch file with signature.
+
+Version.1.0.27.
+	Last image that supports firmware upgrade without signature
+	SSH control.
+	Holidays
+	
+Version 1.0.22 11-01-2016
+	Fixed that pincode change wasn't sent to HISEC readers
+
+Version 1.0.21 16-12-2015
+	Fixed License handling on web page.
+	Added Web access control ( Network page). 
+	Fixed Broadcast problem, when searing for Techpoints.	
+	
+Version 1.0.20 15-12-2015
+	Fixed that server did calculate number of wireless readers incorrectly, and therefor didn't load any readers
+
+Version 1.0.19 15-12-2015
+	Web page layout
+	Various features and minor bug fixes
+	
+Version 1.0.18 27-10-2015
+	Corrected RS485B channel where OSDP for channel B was displayed even that it wasn't selected
+	SSH/SFTP closed when tamper is inactive
+	Conlan OSDP supports sector reading
+	Fixed Tamper issue, where bright light could lead to tamper passive
+	Added Restore default equations for a door
+	Added Cidron OSDP reader.
+	Added License control
+	

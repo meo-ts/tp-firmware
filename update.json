@@ -1,18 +1,63 @@
 {  
-  "formatVersion" : 1,
+  "formatVer" : 1,
   "timeStamp" : "2025-07-28T00:00:01Z",
-  "overview" : {
-	"majorVersions": [2,3],
+  "updateCounter" : 1,
+  "info" : {
 	"filesBaseUrl" : "https://github.com/meo-ts/tp-firmware"
-	"v2" : {
-		"latest": "2.13.5",
-	}
-  },  
-  "files": {
-    "1.2.0": {
-      "url": "https://example.com/firmware/deviceX/v1.2.0/firmware.bin",
-      "hash": "sha256:abc123...",
-      "size": 2048000
-    }
+	"majorVerComplete": [2,3],
+	"majorVerIntegrated": [2,3],
+	"majorSysPatchVer": [1],
+	"complete" : [
+		{
+			"major": 2,
+			"latest": "2.13.5"			
+		},
+		{
+			"major": 3,
+			"latest": "3.16.12"			
+		}
+	],
+	"integrated" : [
+		{
+			"major": 2,
+			"latest": "2.13.0"			
+		},
+		{
+			"major": 3,
+			"latest": "3.16.4"
+		}
+	],
+	"sysPatch" : [
+		{
+			"major": 1,
+			"latest": "1.6.0"			
+		}
+	]	
+  },
+  "files" : {
+	  "complete": [
+		{
+		  "ver": "3.16.12",
+		  "path": "Version.3.16/techpoint_complete/techpoint_complete.3.16.2.tar"		  
+		},
+		{
+		  "ver": "2.13.5",
+		  "path": "Version.2.13/techpoint_complete/techpoint_complete.2.13.5.tar",
+		  "baseUrl": "https://github.com/meo-ts/tp-firmware_v2"		  
+		}
+	  ],
+	  "integrated": [
+		{
+		  "ver" : "3.16.4",
+		  "path": "techpoint_integrated/techpoint_integrated.3.16.12.tar",		  
+		  "baseUrl":""
+		}
+	  ],
+	  "sysPatch": [
+		{
+		  "ver": "1.6.0",
+		  "path": "techsyspatch/techsyspatch.1.6.tar"
+		}
+	  ]
   }
 }
