@@ -36,25 +36,29 @@
 		  "complete": [
 			{
 			  "ver": "3.16.12",
-			  "path": "v3.16.12/Version.3.16/techpoint_complete/techpoint_complete.3.16.12.tar"		  
+			  "path": "v3.16.12/Version.3.16/techpoint_complete/techpoint_complete.3.16.12.tar",
+			  "size": 28323840
 			},
 			{
 			  "ver": "2.13.5",
 			  "path": "v2.13.5/Version.2.13/techpoint_complete/techpoint_complete.2.13.5.tar",
-			  "baseUrl": "https://github.com/meo-ts/tp-firmware_v2"		  
+			  "baseUrl": "https://github.com/meo-ts/tp-firmware_v2",
+			  "size": 28323840			  
 			}
 		  ],
 		  "integrated": [
 			{
 			  "ver" : "3.16.4",
 			  "path": "v3.16.4/techpoint_integrated/techpoint_integrated.3.16.12.tar",		  
-			  "baseUrl":""
+			  "baseUrl":"",
+			  "size": 28323840
 			}
 		  ],
 		  "sysPatch": [
 			{
 			  "ver": "1.6.0",
-			  "path": "techsyspatch/techsyspatch.1.6.tar"
+			  "path": "techsyspatch/techsyspatch.1.6.tar",
+			  "size": 28323840
 			}
 		  ]
 	  }
