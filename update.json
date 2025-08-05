@@ -37,7 +37,9 @@
 			{
 			  "ver": "3.16.12",
 			  "path": "v3.16.12/Version.3.16/techpoint_complete/techpoint_complete.3.16.12.tar",
-			  "size": 28323840
+			  "size": 28323840,
+			  "shortInfo": "Short note (awesome version)",
+			  "longInfo": "Long release info here. Added new LED mode 3 behaviour for new deister device.. Added new LED mode 4. Only user feed back are indicated."
 			},
 			{
 			  "ver": "2.13.5",
