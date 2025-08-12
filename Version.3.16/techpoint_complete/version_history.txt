@@ -1,3 +1,15 @@
+Version.3.16.15 06-08-2025
+	Minor correction for Led  mode 4.
+Version.3.16.14 04-08-2025
+	SC600-160 Fixed
+	SC600-420 Fixed
+	Inverting external input wasn't treated correctly during restart
+	Intrusion:
+		Alarm ouputs couldn't be used in equations
+		Profiles couldn't be used in equations
+
+Version.3.16.13 29-07-2025
+	Minor correction for Led  mode 3.
 Version.3.16.12 24-07-2025
 	Added new LED mode 3 behaviour for new deister device. 
 	Added new LED mode 4. Only user feed back are indicated.
