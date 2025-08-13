@@ -4,7 +4,7 @@
 	  "timeStamp" : "2025-08-12T00:00:01Z",
 	  "updateCounter" : 1,
 	  "info" : {
-		"filesBaseUrl" : "https://github.com/meo-ts/tp-firmware/raw/refs/tags",
+		"filesBaseUrl" : "https://raw.githubusercontent.com/meo-ts/tp-firmware/refs/heads/master",
 		"complete" : [
 			{
 				"major": 2,
