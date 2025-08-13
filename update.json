@@ -4,7 +4,7 @@
 	  "timeStamp" : "2025-08-12T00:00:01Z",
 	  "updateCounter" : 1,
 	  "info" : {
-		"filesBaseUrl" : "https://raw.githubusercontent.com/meo-ts/tp-firmware/refs/heads/master",
+		"filesBaseUrl" : "https://raw.githubusercontent.com/meo-ts/tp-firmware/refs/heads/master",						  
 		"complete" : [
 			{
 				"major": 2,
@@ -36,26 +36,26 @@
 		  "complete": [
 			{
 			  "ver": "3.16.15",
-			  "path": "v3.16.15/Version.3.16/techpoint_complete/techpoint_complete.3.16.15.tar",
+			  "path": "Version.3.16/techpoint_complete/techpoint_complete.3.16.15.tar",
 			  "size": 28323840,
 			  "shortInfo": "Minor correction for Led  mode 4",
 			  "longInfo": "Long release info here. Added new LED mode 3 behaviour for new deister device.. Added new LED mode 4. Only user feed back are indicated."
 			},			
 			{
 			  "ver": "3.16.9",
-			  "path": "v3.16.9/Version.3.16/techpoint_complete/techpoint_complete.3.16.9.tar",
+			  "path": "Version.3.16/techpoint_complete/techpoint_complete.3.16.9.tar",
 			  "size": 28323840,
 			  "shortInfo": "Scheduler bug fix"
 			},		
 			{
 			  "ver": "3.16.2",
-			  "path": "v3.16.2/Version.3.16/techpoint_complete/techpoint_complete.3.16.2.tar",
+			  "path": "Version.3.16/techpoint_complete/techpoint_complete.3.16.2.tar",
 			  "size": 28323840,
 			  "shortInfo": "Show pincode * while typing"
 			},
 			{
 			  "ver": "2.13.5",
-			  "path": "v2.13.5/Version.2.13/techpoint_complete/techpoint_complete.2.13.5.tar",
+			  "path": "Version.2.13/techpoint_complete/techpoint_complete.2.13.5.tar",
 			  "baseUrl": "https://github.com/meo-ts/tp-firmware_v2",
 			  "size": 28323840			  
 			}
@@ -63,20 +63,20 @@
 		  "integrated": [
 			{
 			  "ver" : "3.16.13",
-			  "path": "v3.16.13/techpoint_integrated/techpoint_integrated.3.16.13.tar",		  
+			  "path": "Version.3.16/techpoint_integrated/techpoint_integrated.3.16.13.tar",		  
 			  "baseUrl":"Minor correction for Led  mode 3",
 			  "size": 28323840
 			},
 			{
 			  "ver" : "3.16.12",
-			  "path": "v3.16.12/techpoint_integrated/techpoint_integrated.3.16.12.tar",		  
+			  "path": "Version.3.16/techpoint_integrated/techpoint_integrated.3.16.12.tar",		  
 			  "baseUrl":"",
 			  "size": 28323840,
 			  "shortInfo": "New LED mode 3 behaviour for new deister device. LED mode 4."			  
 			},
 			{
 			  "ver" : "3.16.1",
-			  "path": "v3.16.1/techpoint_integrated/techpoint_integrated.3.16.1.tar",		  
+			  "path": "Version.3.16/techpoint_integrated/techpoint_integrated.3.16.1.tar",		  
 			  "baseUrl":"",
 			  "size": 28323840,
 			  "shortInfo": "Whitelist entries was created from readers even they didn't support it"			  
